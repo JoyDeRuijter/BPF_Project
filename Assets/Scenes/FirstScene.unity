@@ -232,11 +232,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1450638143650814, guid: 9fe1ddc0da27cb44ebeeb8c2befa68bd, type: 3}
       propertyPath: m_Name
-      value: FX_Impact_Stone_01
+      value: FX_ShotImpact
       objectReference: {fileID: 0}
     - target: {fileID: 4401083419488382, guid: 9fe1ddc0da27cb44ebeeb8c2befa68bd, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4401083419488382, guid: 9fe1ddc0da27cb44ebeeb8c2befa68bd, type: 3}
       propertyPath: m_LocalScale.x
@@ -533,7 +533,7 @@ RectTransform:
   m_Children:
   - {fileID: 1740796063}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 870209925}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -922,7 +922,7 @@ Transform:
   m_LocalScale: {x: 1.2, y: 1.8, z: 1.2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &915758747
 MonoBehaviour:
@@ -1302,7 +1302,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1364724448 stripped
 GameObject:
@@ -1330,7 +1330,6 @@ MonoBehaviour:
   range: 100
   impactForce: 30
   fireRate: 5
-  fpsCam: {fileID: 870209924}
   muzzleFlash: {fileID: 1796379201}
   impactEffect: {fileID: 452908357}
 --- !u!1 &1462816078
@@ -1427,7 +1426,7 @@ Transform:
   m_LocalScale: {x: 9.2773485, y: 1, z: 5.4500475}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1477343084
 GameObject:
@@ -1510,7 +1509,7 @@ Transform:
   - {fileID: 870209922}
   - {fileID: 1477343085}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1722680434
 MonoBehaviour:
@@ -1524,12 +1523,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c4ca528ac5fdb4883c535ea619d210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 1722680432}
   speed: 0
   gravity: -9.81
   jumpHeight: 3
-  groundCheck: {fileID: 1477343085}
-  groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1652,7 +1648,7 @@ Transform:
   - {fileID: 789952547}
   - {fileID: 1263966419}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1981154402
 GameObject:
@@ -1758,7 +1754,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1198663731479534, guid: b46264f9e12caed4cb53e7c2ad64aa54, type: 3}
       propertyPath: m_Name
-      value: FX_Gunshot_01
+      value: FX_MuzzleFlash
       objectReference: {fileID: 0}
     - target: {fileID: 4702343032138574, guid: b46264f9e12caed4cb53e7c2ad64aa54, type: 3}
       propertyPath: m_RootOrder
