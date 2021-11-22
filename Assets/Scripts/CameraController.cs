@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     public Transform playerBody;
     void Start()
     {
-        mouseSensitivity = 500f;
+        mouseSensitivity = 300f;
         xRotation = 0;
         Cursor.lockState = CursorLockMode.Locked;
     }
