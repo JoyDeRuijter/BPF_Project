@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     
     void Start()
     {
-        health = 50f;
+        health = 100f;
     }
 
     public void TakeDamage(float amount)
