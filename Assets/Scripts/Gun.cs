@@ -1,20 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public float damage = 10f;
-    public float range = 100f;
+    [SerializeField] private float damage;
+    [SerializeField] private float range;
+    [SerializeField] private float impactForce;
+    [SerializeField] private float fireRate;
+    private float nextTimeToFire;
 
-    public Camera fpsCam;
+    private Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
+    void Start()
+    {
+        damage = 10f;
+        range = 100f;
+        impactForce = 60f;
+        fireRate = 5f;
+        nextTimeToFire = 0f;
+
+        fpsCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+    }
+
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire)
         {
+            nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
         }
     }
@@ -33,7 +46,14 @@ public class Gun : MonoBehaviour
             {
                 enemy.TakeDamage(damage);
             }
-            Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+
+            if (hit.rigidbody != null)
+            {
+                hit.rigidbody.AddForce(-hit.normal * impactForce);
+            }
+
+            GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactGO, 2f);
         }
     }
 }

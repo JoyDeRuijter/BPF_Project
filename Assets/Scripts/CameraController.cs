@@ -1,21 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField]
-    private float mouseSensitivity;
+    [SerializeField] private float mouseSensitivity;
+
     private float xRotation;
-    public Transform playerBody;
+
+    private Transform playerBody;
+
     void Start()
     {
         mouseSensitivity = 300f;
         xRotation = 0;
+        playerBody = GameObject.FindWithTag("Player").GetComponent<Transform>();
+
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
+    {
+        RotateCamera();
+    }
+
+    private void RotateCamera() 
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
