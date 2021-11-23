@@ -1846,7 +1846,8 @@ MonoBehaviour:
   maxAmo: 1
   muzzleFlash: {fileID: 1553554758}
   impactEffect: {fileID: 1082285376}
-  animator: {fileID: 250416616}
+  gunAnimator: {fileID: 250416616}
+  ammoIconAnimator: {fileID: 1021391707}
 --- !u!1 &915758742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,6 +2059,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1548944908949455680, guid: 3ff4118695945de49a625ee67dceecfb, type: 3}
   m_PrefabInstance: {fileID: 1062428474}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1021391707
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021391705}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b241ae3a8eb52a74fa77af9f8511ad3e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!222 &1021391709
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2208,7 +2228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1548944908949455680, guid: 3ff4118695945de49a625ee67dceecfb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 100.9543
+      value: 252.3858
       objectReference: {fileID: 0}
     - target: {fileID: 1548944908949455680, guid: 3ff4118695945de49a625ee67dceecfb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2221,6 +2241,34 @@ PrefabInstance:
     - target: {fileID: 1548944908949455680, guid: 3ff4118695945de49a625ee67dceecfb, type: 3}
       propertyPath: m_LocalPosition.z
       value: 81.59385
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548944908949455680, guid: 3ff4118695945de49a625ee67dceecfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548944908949455680, guid: 3ff4118695945de49a625ee67dceecfb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548944908949455680, guid: 3ff4118695945de49a625ee67dceecfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548944908949455680, guid: 3ff4118695945de49a625ee67dceecfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548944908949455680, guid: 3ff4118695945de49a625ee67dceecfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548944908949455680, guid: 3ff4118695945de49a625ee67dceecfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548944908949455680, guid: 3ff4118695945de49a625ee67dceecfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ff4118695945de49a625ee67dceecfb, type: 3}
@@ -3355,7 +3403,8 @@ MonoBehaviour:
   maxAmo: 5
   muzzleFlash: {fileID: 1796379201}
   impactEffect: {fileID: 452908357}
-  animator: {fileID: 250416616}
+  gunAnimator: {fileID: 250416616}
+  ammoIconAnimator: {fileID: 1021391707}
 --- !u!4 &1369243142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4397750445505214, guid: 6d95802c08720fa44bd83b8dc684671d, type: 3}
@@ -4762,4 +4811,5 @@ MonoBehaviour:
   maxAmo: 10
   muzzleFlash: {fileID: 1852009700}
   impactEffect: {fileID: 452908357}
-  animator: {fileID: 250416616}
+  gunAnimator: {fileID: 250416616}
+  ammoIconAnimator: {fileID: 1021391707}

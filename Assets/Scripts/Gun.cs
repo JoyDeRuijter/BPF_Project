@@ -18,25 +18,34 @@ public class Gun : MonoBehaviour
     private Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
-    public Animator animator;
+    public Animator gunAnimator;
+    public Animator ammoIconAnimator;
 
     void Start()
     {
         currentAmo = maxAmo;
         isReloading = false;
         fpsCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        ammoIconAnimator.SetInteger("AmmoCount", currentAmo);
     }
 
     private void OnEnable()
     {
+        //ammoIconAnimator.SetInteger("AmmoCount", currentAmo);
         isReloading = false;
-        animator.SetBool("Reloading", false);
+        gunAnimator.SetBool("Reloading", false);
+        ammoIconAnimator.SetBool("IsReloading", false);
     }
 
     void Update()
     {
-        if (isReloading)
+        Debug.Log(currentAmo);
+        ammoIconAnimator.SetInteger("AmmoCount", currentAmo);
+
+        if (isReloading) 
+        {
             return;
+        }
 
         if (currentAmo <= 0 || Input.GetKeyDown(KeyCode.R))
         {
@@ -48,14 +57,17 @@ public class Gun : MonoBehaviour
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
+            ammoIconAnimator.SetBool("IsShooting", false);
         }
     }
 
     void Shoot() 
     {
+        ammoIconAnimator.SetBool("IsShooting", true);
         muzzleFlash.Play();
 
         currentAmo--;
+        //ammoIconAnimator.SetInteger("AmmoCount", currentAmo);
 
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
@@ -84,14 +96,18 @@ public class Gun : MonoBehaviour
         isReloading = true;
         Debug.Log("Reloading...");
 
-        animator.SetBool("Reloading", true);
+        gunAnimator.SetBool("Reloading", true);
+        ammoIconAnimator.SetBool("IsReloading", true);
 
         yield return new WaitForSeconds(reloadTime - 0.25f);
 
-        animator.SetBool("Reloading", false);
+        gunAnimator.SetBool("Reloading", false);
+        ammoIconAnimator.SetBool("IsReloading", false);
         yield return new WaitForSeconds(0.25f);
 
         currentAmo = maxAmo;
+        // Update int for the ammoicon color animations
+        //ammoIconAnimator.SetInteger("AmmoCount", maxAmo);
         Debug.Log("Reloaded ammo");
         isReloading = false;
     }
