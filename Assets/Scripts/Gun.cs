@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -20,6 +21,7 @@ public class Gun : MonoBehaviour
     public GameObject impactEffect;
     public Animator gunAnimator;
     public Animator ammoIconAnimator;
+    private Text ammoCounter;
 
     void Start()
     {
@@ -27,6 +29,7 @@ public class Gun : MonoBehaviour
         isReloading = false;
         fpsCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         ammoIconAnimator.SetInteger("AmmoCount", currentAmo);
+        ammoCounter = GameObject.FindGameObjectWithTag("AmmoCounter").GetComponent<Text>();
     }
 
     private void OnEnable()
@@ -59,6 +62,8 @@ public class Gun : MonoBehaviour
             Shoot();
             ammoIconAnimator.SetBool("IsShooting", false);
         }
+
+        ShowAmmo();
     }
 
     void Shoot() 
@@ -110,5 +115,10 @@ public class Gun : MonoBehaviour
         //ammoIconAnimator.SetInteger("AmmoCount", maxAmo);
         Debug.Log("Reloaded ammo");
         isReloading = false;
+    }
+
+    private void ShowAmmo()
+    {
+        ammoCounter.text = "" + currentAmo;
     }
 }
