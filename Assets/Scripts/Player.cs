@@ -30,13 +30,28 @@ public class Player : MonoBehaviour
         onePercent = maxWidth / 1000;
         tenPercent = onePercent * 10;
 
+        if (width > health * 3.5)
+            width -= onePercent;
+
         if (width <= 0)
         {
             width = 0;
             Debug.Log("health is 0");
         }
-        width-= onePercent;
         healthbar.GetComponent<RectTransform>().localScale = new Vector3(width, 50, 1);
+    }
 
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if (health <= 0f)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Player died");
     }
 }
