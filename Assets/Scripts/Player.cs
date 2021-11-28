@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
         if (width <= 0)
         {
             width = 0;
-            Debug.Log("health is 0");
+            //Debug.Log("health is 0");
         }
         healthbar.GetComponent<RectTransform>().localScale = new Vector3(width, 50, 1);
     }
