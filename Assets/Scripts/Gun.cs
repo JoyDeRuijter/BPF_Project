@@ -34,7 +34,6 @@ public class Gun : MonoBehaviour
 
     private void OnEnable()
     {
-        //ammoIconAnimator.SetInteger("AmmoCount", currentAmo);
         isReloading = false;
         gunAnimator.SetBool("Reloading", false);
         ammoIconAnimator.SetBool("IsReloading", false);
@@ -42,7 +41,6 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(currentAmo);
         ammoIconAnimator.SetInteger("AmmoCount", currentAmo);
 
         if (isReloading) 
@@ -72,12 +70,11 @@ public class Gun : MonoBehaviour
         muzzleFlash.Play();
 
         currentAmo--;
-        //ammoIconAnimator.SetInteger("AmmoCount", currentAmo);
 
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            Debug.Log(hit.transform.name);
+            Debug.Log("Hit: " + hit.transform.name);
 
             Enemy enemy = hit.transform.GetComponent<Enemy>();
             if (enemy != null)
@@ -99,7 +96,6 @@ public class Gun : MonoBehaviour
     IEnumerator Reload()
     {
         isReloading = true;
-        Debug.Log("Reloading...");
 
         gunAnimator.SetBool("Reloading", true);
         ammoIconAnimator.SetBool("IsReloading", true);
@@ -111,9 +107,6 @@ public class Gun : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         currentAmo = maxAmo;
-        // Update int for the ammoicon color animations
-        //ammoIconAnimator.SetInteger("AmmoCount", maxAmo);
-        Debug.Log("Reloaded ammo");
         isReloading = false;
     }
 
