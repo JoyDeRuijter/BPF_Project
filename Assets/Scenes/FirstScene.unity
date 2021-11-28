@@ -1005,9 +1005,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  sightRange: 50
+  attackRange: 25
+  timeBetweenAttacks: 1.5
   damage: 0
-  impactForce: 0
   player: {fileID: 1722680431}
+  impactEffect: {fileID: 452908357}
   cam: {fileID: 870209924}
   whatIsGround:
     serializedVersion: 2
@@ -1015,14 +1018,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  impactEffect: {fileID: 452908357}
   muzzleFlash: {fileID: 374321106}
   agent: {fileID: 381008312}
-  sightRange: 50
-  attackRange: 25
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  timeBetweenAttacks: 1.5
 --- !u!54 &381008314
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2869,10 +2866,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
-  range: 10
+  range: 15
   impactForce: 250
   fireRate: 2
-  reloadTime: 2
+  reloadTime: 1.5
   maxAmo: 1
   muzzleFlash: {fileID: 1553554758}
   impactEffect: {fileID: 1082285376}
@@ -2990,10 +2987,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e6c53296108e14ab43a8a97d4e7e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 5
+  sightRange: 50
+  attackRange: 25
+  timeBetweenAttacks: 1.5
   damage: 0
-  impactForce: 0
   player: {fileID: 1722680431}
+  impactEffect: {fileID: 452908357}
   cam: {fileID: 870209924}
   whatIsGround:
     serializedVersion: 2
@@ -3001,14 +3001,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  impactEffect: {fileID: 452908357}
   muzzleFlash: {fileID: 926825809}
   agent: {fileID: 915758749}
-  sightRange: 50
-  attackRange: 25
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  timeBetweenAttacks: 1.5
 --- !u!54 &915758748
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3129,9 +3123,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  sightRange: 50
+  attackRange: 25
+  timeBetweenAttacks: 1.5
   damage: 0
-  impactForce: 0
   player: {fileID: 1722680431}
+  impactEffect: {fileID: 452908357}
   cam: {fileID: 870209924}
   whatIsGround:
     serializedVersion: 2
@@ -3139,14 +3136,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  impactEffect: {fileID: 452908357}
   muzzleFlash: {fileID: 1134405312}
   agent: {fileID: 928946707}
-  sightRange: 50
-  attackRange: 25
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  timeBetweenAttacks: 1.5
 --- !u!54 &928946709
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4878,9 +4869,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  sightRange: 50
+  attackRange: 25
+  timeBetweenAttacks: 1.5
   damage: 0
-  impactForce: 0
   player: {fileID: 1722680431}
+  impactEffect: {fileID: 452908357}
   cam: {fileID: 870209924}
   whatIsGround:
     serializedVersion: 2
@@ -4888,14 +4882,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  impactEffect: {fileID: 452908357}
   muzzleFlash: {fileID: 1357196815}
   agent: {fileID: 1333799322}
-  sightRange: 50
-  attackRange: 25
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  timeBetweenAttacks: 1.5
 --- !u!54 &1333799324
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5414,9 +5402,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  sightRange: 50
+  attackRange: 25
+  timeBetweenAttacks: 1.5
   damage: 0
-  impactForce: 0
   player: {fileID: 1722680431}
+  impactEffect: {fileID: 452908357}
   cam: {fileID: 870209924}
   whatIsGround:
     serializedVersion: 2
@@ -5424,14 +5415,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  impactEffect: {fileID: 452908357}
   muzzleFlash: {fileID: 2036793592}
   agent: {fileID: 1518902939}
-  sightRange: 50
-  attackRange: 25
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  timeBetweenAttacks: 1.5
 --- !u!54 &1518902941
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6579,9 +6564,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  sightRange: 50
+  attackRange: 25
+  timeBetweenAttacks: 1.5
   damage: 0
-  impactForce: 0
   player: {fileID: 1722680431}
+  impactEffect: {fileID: 452908357}
   cam: {fileID: 870209924}
   whatIsGround:
     serializedVersion: 2
@@ -6589,14 +6577,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  impactEffect: {fileID: 452908357}
   muzzleFlash: {fileID: 387400829}
   agent: {fileID: 1839555562}
-  sightRange: 50
-  attackRange: 25
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  timeBetweenAttacks: 1.5
 --- !u!54 &1839555564
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,28 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float health;
+    [SerializeField] private float health, sightRange, attackRange, timeBetweenAttacks;
     [SerializeField] private int damage;
-    [SerializeField] private float impactForce;
-    public GameObject player;
-    public Camera cam;
-    public LayerMask whatIsGround, whatIsPlayer;
+    [SerializeField] private GameObject player, impactEffect;
+    [SerializeField] private Camera cam;
+    [SerializeField] private LayerMask whatIsGround, whatIsPlayer;
+    [SerializeField] private ParticleSystem muzzleFlash;
+    [SerializeField] private NavMeshAgent agent;
 
-    public GameObject impactEffect;
-    public ParticleSystem muzzleFlash;
-    public NavMeshAgent agent;
-
+    private bool playerInSightRange, playerInAttackRange, alreadyAttacked;
     private RaycastHit hit;
     private Ray ray;
-    private Vector3 distanceToPlayer;
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
 
     void Start()
     {
@@ -34,14 +26,12 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         ray = cam.ScreenPointToRay(player.transform.position);
-        distanceToPlayer = transform.position - player.transform.position;
 
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if(playerInSightRange && !playerInAttackRange) FollowPlayer();
         if(playerInSightRange && playerInAttackRange) ShootPlayer();
-
     }
 
     private void FollowPlayer()
@@ -80,9 +70,7 @@ public class Enemy : MonoBehaviour
     {
         health -= amount;
         if (health <= 0f)
-        {
             Die();
-        }
     }
 
     private void Die()

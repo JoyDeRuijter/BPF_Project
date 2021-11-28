@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour
 {
-    public int selectedWeapon = 0;
+    [SerializeField] private int selectedWeapon = 0;
 
     void Start()
     {
@@ -16,9 +16,7 @@ public class WeaponSwitching : MonoBehaviour
         HandleInput();
 
         if (previousSelectedWeapon != selectedWeapon)
-        {
             SelectWeapon();
-        }
     }
 
     private void SelectWeapon()
@@ -27,13 +25,9 @@ public class WeaponSwitching : MonoBehaviour
         foreach (Transform weapon in transform)
         {
             if (i == selectedWeapon)
-            {
                 weapon.gameObject.SetActive(true);
-            }
             else
-            {
                 weapon.gameObject.SetActive(false);
-            }
             i++;
         }
     }

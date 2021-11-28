@@ -1,17 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private int health;
-    private float maxWidth;
-    private float width;
-    private float onePercent;
-    private float tenPercent;
-    public GameObject healthbar;
-   
+    [SerializeField] private GameObject healthbar;
+
+    private float maxWidth, width, onePercent;
 
     void Start()
     {
@@ -25,19 +19,16 @@ public class Player : MonoBehaviour
         scaleHealthbar();
     }
 
-    void scaleHealthbar()
+    void scaleHealthbar() //TODO move this to a new class for the healthbar
     {
         onePercent = maxWidth / 1000;
-        tenPercent = onePercent * 10;
 
         if (width > health * 3.5)
             width -= onePercent;
 
         if (width <= 0)
-        {
             width = 0;
-            //Debug.Log("health is 0");
-        }
+
         healthbar.GetComponent<RectTransform>().localScale = new Vector3(width, 50, 1);
     }
 

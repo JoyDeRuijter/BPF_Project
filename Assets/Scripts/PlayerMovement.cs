@@ -2,23 +2,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float gravity;
-    [SerializeField] private float jumpHeight;
-    private float groundDistance;
+    [SerializeField] private float speed, gravity, jumpHeight;
+    [SerializeField] private LayerMask groundMask;
 
+    private float groundDistance;
+    private bool isGrounded;
     private CharacterController controller;
     private Transform groundCheck;
     private Vector3 velocity;
-    private bool isGrounded;
-
-    public LayerMask groundMask;
 
     void Start()
     {
         speed = 12f;
         gravity = -30f;
-        jumpHeight = 3f;
+        jumpHeight = 3.5f;
         groundDistance = 0.4f;
         controller = GetComponent<CharacterController>();
         groundCheck = GameObject.Find("Player/GroundCheck").GetComponent<Transform>();

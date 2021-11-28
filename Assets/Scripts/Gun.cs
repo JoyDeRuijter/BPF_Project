@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField] private float damage;
-    [SerializeField] private float range;
-    [SerializeField] private float impactForce;
-    [SerializeField] private float fireRate;
-    [SerializeField] private float reloadTime;
-    private float nextTimeToFire = 0f;
-
+    [SerializeField] private float damage, range, impactForce, fireRate, reloadTime;
     [SerializeField] private int maxAmo;
+    [SerializeField] private ParticleSystem muzzleFlash;
+    [SerializeField] private GameObject impactEffect;
+    [SerializeField] private Animator gunAnimator, ammoIconAnimator;
+
+    private float nextTimeToFire = 0f;
     private int currentAmo;
-
     private bool isReloading;
-
     private Camera fpsCam;
-    public ParticleSystem muzzleFlash;
-    public GameObject impactEffect;
-    public Animator gunAnimator;
-    public Animator ammoIconAnimator;
     private Text ammoCounter;
+
+    //TODO Place everything that has to do with the ammoIcon and ammoCounter in a seperate class
 
     void Start()
     {
@@ -44,9 +39,7 @@ public class Gun : MonoBehaviour
         ammoIconAnimator.SetInteger("AmmoCount", currentAmo);
 
         if (isReloading) 
-        {
             return;
-        }
 
         if (currentAmo <= 0 || Input.GetKeyDown(KeyCode.R))
         {
@@ -60,7 +53,6 @@ public class Gun : MonoBehaviour
             Shoot();
             ammoIconAnimator.SetBool("IsShooting", false);
         }
-
         ShowAmmo();
     }
 
@@ -68,24 +60,19 @@ public class Gun : MonoBehaviour
     {
         ammoIconAnimator.SetBool("IsShooting", true);
         muzzleFlash.Play();
-
         currentAmo--;
-
         RaycastHit hit;
+
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Debug.Log("Hit: " + hit.transform.name);
-
             Enemy enemy = hit.transform.GetComponent<Enemy>();
+
             if (enemy != null)
-            {
                 enemy.TakeDamage(damage);
-            }
 
             if (hit.rigidbody != null)
-            {
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
-            }
 
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             impactGO.GetComponent<ParticleSystem>().Play();
@@ -96,7 +83,6 @@ public class Gun : MonoBehaviour
     IEnumerator Reload()
     {
         isReloading = true;
-
         gunAnimator.SetBool("Reloading", true);
         ammoIconAnimator.SetBool("IsReloading", true);
 
@@ -104,6 +90,7 @@ public class Gun : MonoBehaviour
 
         gunAnimator.SetBool("Reloading", false);
         ammoIconAnimator.SetBool("IsReloading", false);
+
         yield return new WaitForSeconds(0.25f);
 
         currentAmo = maxAmo;

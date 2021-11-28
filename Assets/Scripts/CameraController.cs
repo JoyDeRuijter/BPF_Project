@@ -5,7 +5,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float mouseSensitivity;
 
     private float yRotation;
-
     private Transform playerBody;
 
     void Start()
