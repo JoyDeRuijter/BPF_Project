@@ -16,8 +16,6 @@ public class Gun : MonoBehaviour
     private Camera fpsCam;
     private Text ammoCounter;
 
-    //TODO Place everything that has to do with the ammoIcon and ammoCounter in a seperate class
-
     void Start()
     {
         currentAmo = maxAmo;
