@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour
@@ -10,14 +8,16 @@ public class Pickup : MonoBehaviour
     { 
         Health,
         Ammo,
-        Weapon
+        Weapon,
+        Bounty
     };
 
     [SerializeField] private PickupTypes pickupType;
 
     void Start()
     {
-        
+        if (pickupType == PickupTypes.Bounty)
+            playerEffect = GameObject.FindGameObjectWithTag("BountyEffect").GetComponent<ParticleSystem>();
     }
 
     void Update()

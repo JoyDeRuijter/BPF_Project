@@ -2,11 +2,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class NPC : MonoBehaviour
 {
     [SerializeField] private float health, sightRange, attackRange, timeBetweenAttacks;
     [SerializeField] private int damage;
-    [SerializeField] private GameObject player, impactEffect;
+    [SerializeField] private GameObject player, impactEffect, bountyHead;
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask whatIsGround, whatIsPlayer;
     [SerializeField] private ParticleSystem muzzleFlash;
@@ -73,8 +73,16 @@ public class Enemy : MonoBehaviour
             Die();
     }
 
+    private void SpawnBounty()
+    {
+        Vector3 bountyPosition = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+        GameObject bountyGO = Instantiate(bountyHead, bountyPosition, Quaternion.LookRotation(hit.normal));
+        bountyGO.GetComponent<ParticleSystem>().Play();
+    }
+
     private void Die()
     {
+        SpawnBounty();
         Destroy(gameObject);
     }
 }

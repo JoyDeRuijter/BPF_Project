@@ -64,10 +64,10 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             Debug.Log("Hit: " + hit.transform.name);
-            Enemy enemy = hit.transform.GetComponent<Enemy>();
+            NPC npc = hit.transform.GetComponent<NPC>();
 
-            if (enemy != null)
-                enemy.TakeDamage(damage);
+            if (npc != null)
+                npc.TakeDamage(damage);
 
             if (hit.rigidbody != null)
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
