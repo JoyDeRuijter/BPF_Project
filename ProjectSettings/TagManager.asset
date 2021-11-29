@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AmmoCounter
   - HealthBar
+  - MoneyCounter
   layers:
   - Default
   - TransparentFX
