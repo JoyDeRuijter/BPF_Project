@@ -8,7 +8,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private GameObject player;
     
     private int health;
-    private float maxWidth, width, onePercent;
+    private float maxWidth, width, onePermille;
 
     void Start()
     {
@@ -25,13 +25,13 @@ public class HealthBar : MonoBehaviour
 
     void scaleHealthbar() 
     {
-        onePercent = maxWidth / 1000;
+        onePermille = maxWidth / 1000;
 
         if (width > health * 3.5)
-            width -= onePercent;
+            width -= onePermille;
 
         if (health * 3.5 > width)
-            width += onePercent;
+            width += onePermille;
 
         if (width <= 0)
             width = 0;

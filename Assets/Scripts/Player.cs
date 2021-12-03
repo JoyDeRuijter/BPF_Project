@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
         health -= amount;
         if (health <= 0f)
         {
+            health = 0;
             Die();
         }
     }
