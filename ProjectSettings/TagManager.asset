@@ -9,6 +9,7 @@ TagManager:
   - MoneyCounter
   - BountyEffect
   - XpCounter
+  - LevelCounter
   layers:
   - Default
   - TransparentFX

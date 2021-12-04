@@ -4,20 +4,27 @@ using UnityEngine.UI;
 public class XpDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    private Text xpCounter;
+    private Text levelCounter, xpCounter;
 
     void Start()
     {
+        levelCounter = GameObject.FindGameObjectWithTag("LevelCounter").GetComponent<Text>();
         xpCounter = GameObject.FindGameObjectWithTag("XpCounter").GetComponent<Text>();
     }
 
     void Update()
     {
         ShowXpLevel();
+        ShowXpCount();
     }
 
     private void ShowXpLevel()
     {
-        xpCounter.text = "" + player.GetComponent<Player>().currentLevel;
+        levelCounter.text = "" + player.GetComponent<Player>().currentLevel;
+    }
+
+    private void ShowXpCount()
+    {
+        xpCounter.text = "" + player.GetComponent<Player>().currentXp + "/" + player.GetComponent<Player>().xpNeeded + " XP";
     }
 }

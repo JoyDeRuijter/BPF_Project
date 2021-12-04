@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int health, currentXp, currentLevel;
-    private int xpNeeded;
+    public int health, currentXp, currentLevel, xpNeeded;
 
     void Start()
     {
