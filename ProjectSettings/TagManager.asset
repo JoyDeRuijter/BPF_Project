@@ -8,6 +8,7 @@ TagManager:
   - HealthBar
   - MoneyCounter
   - BountyEffect
+  - XpCounter
   layers:
   - Default
   - TransparentFX

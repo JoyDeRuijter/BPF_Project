@@ -22,7 +22,7 @@ public class Pickup : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     void OnParticleCollision(GameObject player)
@@ -32,5 +32,8 @@ public class Pickup : MonoBehaviour
 
         if(pickupType == PickupTypes.Health)
             player.GetComponent<Player>().health += 15;
+
+        if (pickupType == PickupTypes.Bounty)
+            player.GetComponent<Player>().currentXp += 50;
     }
 }

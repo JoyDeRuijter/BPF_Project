@@ -63,7 +63,6 @@ public class Gun : MonoBehaviour
 
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            Debug.Log("Hit: " + hit.transform.name);
             NPC npc = hit.transform.GetComponent<NPC>();
 
             if (npc != null)
