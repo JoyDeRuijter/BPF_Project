@@ -6,7 +6,7 @@ public class NPC : MonoBehaviour
 {
     [SerializeField] private float health, sightRange, attackRange, timeBetweenAttacks;
     [SerializeField] private int damage;
-    [SerializeField] private GameObject player, impactEffect, bountyHead;
+    [SerializeField] private GameObject player, impactEffect, bountyHead, npc;
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask whatIsGround, whatIsPlayer;
     [SerializeField] private ParticleSystem muzzleFlash;
@@ -15,6 +15,7 @@ public class NPC : MonoBehaviour
     private bool playerInSightRange, playerInAttackRange, alreadyAttacked;
     private RaycastHit hit;
     private Ray ray;
+    private Animator anim;
 
     private enum NPCtype 
     { 
@@ -30,6 +31,7 @@ public class NPC : MonoBehaviour
         damage = 5;
         health = 100f;
         alreadyAttacked = false;
+        anim = npc.GetComponent<Animator>();
     }
 
     void Update()
@@ -39,8 +41,16 @@ public class NPC : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if(playerInSightRange && !playerInAttackRange) FollowPlayer();
-        if(playerInSightRange && playerInAttackRange) ShootPlayer();
+        if (playerInSightRange && !playerInAttackRange)
+        {
+            FollowPlayer();
+        }
+
+        if (playerInSightRange && playerInAttackRange)
+        {
+            ShootPlayer();
+        }
+            
     }
 
     private void FollowPlayer()
@@ -50,6 +60,7 @@ public class NPC : MonoBehaviour
             transform.LookAt(player.transform.position);
             agent.SetDestination(hit.point);
         }
+        anim.SetBool("IsRunning", true);
     }
 
     private void ShootPlayer()
@@ -66,6 +77,7 @@ public class NPC : MonoBehaviour
             Destroy(impactGO, 2f);
             alreadyAttacked = true;
             StartCoroutine(ResetAttack());
+            anim.SetBool("IsRunning", false);
         }
     }
 
