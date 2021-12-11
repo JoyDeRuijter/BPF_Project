@@ -16,6 +16,15 @@ public class NPC : MonoBehaviour
     private RaycastHit hit;
     private Ray ray;
 
+    private enum NPCtype 
+    { 
+        Friendly,
+        Hostile,
+        Wanted
+    };
+
+    [SerializeField] private NPCtype npcType;
+
     void Start()
     {
         damage = 5;
@@ -82,7 +91,9 @@ public class NPC : MonoBehaviour
 
     private void Die()
     {
-        SpawnBounty();
+        if(npcType == NPCtype.Wanted)
+            SpawnBounty();
+
         Destroy(gameObject);
     }
 }
