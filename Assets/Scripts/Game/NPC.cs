@@ -12,7 +12,7 @@ public class NPC : MonoBehaviour
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private NavMeshAgent agent;
 
-    private bool playerInSightRange, playerInAttackRange, alreadyAttacked;
+    private bool playerInSightRange, playerInAttackRange, alreadyAttacked, isMoving;
     private RaycastHit hit;
     private Ray ray;
     private Animator anim;
@@ -41,16 +41,13 @@ public class NPC : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (playerInSightRange && !playerInAttackRange)
-        {
+        if (playerInSightRange && !playerInAttackRange) 
             FollowPlayer();
-        }
-
-        if (playerInSightRange && playerInAttackRange)
-        {
+        if (playerInSightRange && playerInAttackRange)  
             ShootPlayer();
-        }
-            
+
+        StartCoroutine(IsMoving());
+        UpdateAnimations();
     }
 
     private void FollowPlayer()
@@ -59,8 +56,8 @@ public class NPC : MonoBehaviour
         {
             transform.LookAt(player.transform.position);
             agent.SetDestination(hit.point);
+            Debug.Log(hit);
         }
-        anim.SetBool("IsRunning", true);
     }
 
     private void ShootPlayer()
@@ -77,7 +74,6 @@ public class NPC : MonoBehaviour
             Destroy(impactGO, 2f);
             alreadyAttacked = true;
             StartCoroutine(ResetAttack());
-            anim.SetBool("IsRunning", false);
         }
     }
 
@@ -99,6 +95,26 @@ public class NPC : MonoBehaviour
         Vector3 bountyPosition = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
         GameObject bountyGO = Instantiate(bountyHead, bountyPosition, Quaternion.LookRotation(hit.normal));
         bountyGO.GetComponent<ParticleSystem>().Play();
+    }
+
+    private IEnumerator IsMoving()
+    {
+        Vector3 prevPos = transform.position;
+        yield return new WaitForSeconds(0.15f);
+        Vector3 actualPos = transform.position;
+
+        if (prevPos == actualPos) 
+            isMoving = false;
+        else if (prevPos != actualPos)
+            isMoving = true;
+    }
+
+    private void UpdateAnimations()
+    { 
+        if (isMoving)
+            anim.SetBool("IsRunning", true);
+        else
+            anim.SetBool("IsRunning", false);
     }
 
     private void Die()
