@@ -16,6 +16,7 @@ public class QuestEvent
     //DONE - has been achieved
 
     public string name, description, id;
+    public int order = -1; 
     public EventStatus status;
 
     public List<QuestPath> pathlist = new List<QuestPath>();
