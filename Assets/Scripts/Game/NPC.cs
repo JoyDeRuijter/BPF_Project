@@ -6,13 +6,13 @@ public class NPC : MonoBehaviour
 {
     [SerializeField] private float health, sightRange, attackRange, timeBetweenAttacks;
     [SerializeField] private int damage;
-    [SerializeField] private GameObject player, impactEffect, bountyHead, npc;
+    [SerializeField] private GameObject player, impactEffect, bountyHead, npc, npcWeapon;
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask whatIsGround, whatIsPlayer;
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private NavMeshAgent agent;
 
-    private bool playerInSightRange, playerInAttackRange, alreadyAttacked, isMoving;
+    private bool playerInSightRange, playerInAttackRange, alreadyAttacked, isMoving, isHolstered;
     private RaycastHit hit;
     private Ray ray;
     private Animator anim;
@@ -32,19 +32,29 @@ public class NPC : MonoBehaviour
         health = 100f;
         alreadyAttacked = false;
         anim = npc.GetComponent<Animator>();
+        isHolstered = player.GetComponentInChildren<WeaponSwitching>().isHolstered;
     }
 
     void Update()
     {
+        isHolstered = player.GetComponentInChildren<WeaponSwitching>().isHolstered;
         ray = cam.ScreenPointToRay(player.transform.position);
 
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (playerInSightRange && !playerInAttackRange) 
-            FollowPlayer();
-        if (playerInSightRange && playerInAttackRange)  
-            ShootPlayer();
+        switch (npcType) 
+        {
+            case NPCtype.Wanted:
+                WantedBehaviour();
+                break;
+            case NPCtype.Hostile:
+                HostileBehaviour();
+                break;
+            case NPCtype.Friendly:
+                FriendlyBehaviour();
+                break;
+        }
 
         StartCoroutine(IsMoving());
         UpdateAnimations();
@@ -75,6 +85,12 @@ public class NPC : MonoBehaviour
             alreadyAttacked = true;
             StartCoroutine(ResetAttack());
         }
+    }
+
+    //TODO
+    private void Patrol()
+    { 
+        // Add an NPC patrol
     }
 
     private IEnumerator ResetAttack()
@@ -123,5 +139,37 @@ public class NPC : MonoBehaviour
             SpawnBounty();
 
         Destroy(gameObject);
+    }
+
+    private void WantedBehaviour()
+    {
+        Patrol();
+        if (playerInSightRange && !playerInAttackRange)
+            FollowPlayer();
+        if (playerInSightRange && playerInAttackRange)
+            ShootPlayer();
+    }
+
+    private void HostileBehaviour()
+    {
+        if (isHolstered)
+        {
+            Patrol();
+            npcWeapon.SetActive(false);
+        }
+        else if (!isHolstered)
+        {
+            Patrol();
+            npcWeapon.SetActive(true);
+            if (playerInSightRange && !playerInAttackRange)
+                FollowPlayer();
+            if (playerInSightRange && playerInAttackRange)
+                ShootPlayer();
+        }
+    }
+
+    private void FriendlyBehaviour()
+    { 
+        //Insert friendly behaviour after friendly NPC 
     }
 }

@@ -3,20 +3,33 @@ using UnityEngine;
 public class WeaponSwitching : MonoBehaviour
 {
     [SerializeField] private int selectedWeapon = 0;
+    public bool isHolstered { get; private set; }
+    private Gun gunScript;
+    private GameObject gameObjectCurrentWeapon;
 
     void Start()
     {
+        isHolstered = false;
         SelectWeapon();
     }
 
     void Update()
     {
-        int previousSelectedWeapon = selectedWeapon;
+        
+        if (!isHolstered)
+        { 
+            int previousSelectedWeapon = selectedWeapon;
 
-        HandleInput();
+            HandleInput();
 
-        if (previousSelectedWeapon != selectedWeapon)
-            SelectWeapon();
+            if (previousSelectedWeapon != selectedWeapon)
+                SelectWeapon();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            HolsterWeapon(selectedWeapon);
+        }
     }
 
     private void SelectWeapon()
@@ -25,7 +38,12 @@ public class WeaponSwitching : MonoBehaviour
         foreach (Transform weapon in transform)
         {
             if (i == selectedWeapon)
+            { 
                 weapon.gameObject.SetActive(true);
+                gunScript = weapon.gameObject.GetComponent<Gun>();
+                gameObjectCurrentWeapon = weapon.gameObject;
+            }
+                
             else
                 weapon.gameObject.SetActive(false);
             i++;
@@ -62,5 +80,22 @@ public class WeaponSwitching : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha4) && transform.childCount >= 4)
             selectedWeapon = 3;
+    }
+
+    private void HolsterWeapon(int currentWeapon)
+    {
+        if (isHolstered)
+        {
+            isHolstered = false;
+            gunScript.enabled = true;
+            gameObjectCurrentWeapon.SetActive(true);
+        }
+
+        else if (!isHolstered)
+        {
+            isHolstered = true;
+            gunScript.enabled = false;
+            gameObjectCurrentWeapon.SetActive(false);
+        }
     }
 }

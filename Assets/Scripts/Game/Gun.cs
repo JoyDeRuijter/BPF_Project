@@ -52,6 +52,7 @@ public class Gun : MonoBehaviour
             ammoIconAnimator.SetBool("IsShooting", false);
         }
         ShowAmmo();
+
     }
 
     void Shoot() 
@@ -98,4 +99,5 @@ public class Gun : MonoBehaviour
     {
         ammoCounter.text = "" + currentAmo;
     }
+
 }

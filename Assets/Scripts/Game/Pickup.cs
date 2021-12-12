@@ -27,7 +27,6 @@ public class Pickup : MonoBehaviour
 
     void OnParticleCollision(GameObject player)
     {
-        Destroy(gameObject);
         playerEffect.Play();
 
         if(pickupType == PickupTypes.Health)
@@ -35,5 +34,7 @@ public class Pickup : MonoBehaviour
 
         if (pickupType == PickupTypes.Bounty)
             player.GetComponent<Player>().currentXp += 50;
+
+        Destroy(gameObject);
     }
 }
