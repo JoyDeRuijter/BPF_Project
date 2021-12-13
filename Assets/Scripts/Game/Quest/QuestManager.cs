@@ -6,21 +6,27 @@ using UnityEngine.UI;
 public class QuestManager : MonoBehaviour
 {
     public Quest quest = new Quest();
-    public GameObject questPrintBox, buttonPrefab;
+    public GameObject questPrintBox, buttonPrefab, victoryPopup;
 
-    public GameObject A, B, C;
+    QuestEvent final;
+
+    public GameObject A, B, C, D, E;
 
     void Start()
     {
         //create each event
-        QuestEvent a = quest.AddQuestEvent("test1", "description 1");
-        QuestEvent b = quest.AddQuestEvent("test2", "description 2");
-        QuestEvent c = quest.AddQuestEvent("test3", "description 3");
+        QuestEvent a = quest.AddQuestEvent("Sheriff's request", "Meet with the sheriff", A);
+        QuestEvent b = quest.AddQuestEvent("On the loose", "Find the wanted criminal", B);
+        QuestEvent c = quest.AddQuestEvent("Wanted", "Kill the wanted criminal", C);
+        QuestEvent d = quest.AddQuestEvent("Collect the evidence", "Pick up the bounty skull", D);
+        QuestEvent e = quest.AddQuestEvent("Collect your bounty", "Meet with the sheriff", E);
 
         //define the paths between the events - e.g. the order they must be completed
         quest.AddPath(a.GetId(), b.GetId());
-        quest.AddPath(b.GetId(), c.GetId());
         quest.AddPath(a.GetId(), c.GetId());
+        quest.AddPath(b.GetId(), c.GetId());
+        quest.AddPath(c.GetId(), d.GetId());
+        quest.AddPath(d.GetId(), e.GetId());
 
         quest.BFS(a.GetId());
 
@@ -30,8 +36,12 @@ public class QuestManager : MonoBehaviour
         B.GetComponent<QuestLocation>().Setup(this, b, button);
         button = CreateButton(c).GetComponent<QuestButton>();
         C.GetComponent<QuestLocation>().Setup(this, c, button);
+        button = CreateButton(d).GetComponent<QuestButton>();
+        D.GetComponent<QuestLocation>().Setup(this, d, button);
+        button = CreateButton(e).GetComponent<QuestButton>();
+        E.GetComponent<QuestLocation>().Setup(this, e, button);
 
-        quest.PrintPath();
+        final = e;
     }
 
     GameObject CreateButton(QuestEvent e)
@@ -48,6 +58,13 @@ public class QuestManager : MonoBehaviour
 
     public void UpdateQuestOnCompletion(QuestEvent e)
     {
+        if (e == final)
+        {
+            Debug.Log("quest completed");
+            StartCoroutine(DisplayVictoryPopup(3));
+            return;
+        }
+
         foreach (QuestEvent n in quest.questEvents)
         {
             //if this event is next in order
@@ -57,6 +74,13 @@ public class QuestManager : MonoBehaviour
                 n.UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
             }
         }
+    }
+
+    private IEnumerator DisplayVictoryPopup(float seconds)
+    {
+        victoryPopup.SetActive(true);
+        yield return new WaitForSeconds(seconds);
+        victoryPopup.SetActive(false);
     }
 
 }

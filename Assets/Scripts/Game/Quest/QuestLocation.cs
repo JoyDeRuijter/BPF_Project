@@ -12,9 +12,9 @@ public class QuestLocation : MonoBehaviour
     public QuestEvent qEvent;
     public QuestButton qButton;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.tag != "Player") 
+        if (collider.gameObject.tag != "Player") 
             return;
 
         //If we shouldn't be working on this event

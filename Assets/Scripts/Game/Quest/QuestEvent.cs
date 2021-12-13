@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestEvent
-{
+{ 
     public enum EventStatus
     {
         WAITING,
@@ -19,15 +19,17 @@ public class QuestEvent
     public int order = -1;
     public EventStatus status;
     public QuestButton button;
+    public GameObject location;
 
     public List<QuestPath> pathlist = new List<QuestPath>();
 
-    public QuestEvent(string n, string d)
+    public QuestEvent(string n, string d, GameObject loc)
     {
         id = Guid.NewGuid().ToString();
         name = n;
         description = d;
         status = EventStatus.WAITING;
+        location = loc;
     }
 
     public void UpdateQuestEvent(EventStatus es)

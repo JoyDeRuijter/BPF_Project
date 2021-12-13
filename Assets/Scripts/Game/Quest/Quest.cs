@@ -10,9 +10,9 @@ public class Quest
     {
     }
 
-    public QuestEvent AddQuestEvent(string n, string d)
+    public QuestEvent AddQuestEvent(string n, string d, GameObject l)
     {
-        QuestEvent questEvent = new QuestEvent(n, d);
+        QuestEvent questEvent = new QuestEvent(n, d, l);
         questEvents.Add(questEvent);
         return questEvent;
     }
@@ -51,13 +51,4 @@ public class Quest
                 BFS(e.endEvent.GetId(), orderNumber + 1);
         }
     }
-
-    public void PrintPath()
-    {
-        foreach (QuestEvent n in questEvents)
-        {
-            Debug.Log(n.name + " " + n.order);
-        }
-    }
-
 }
