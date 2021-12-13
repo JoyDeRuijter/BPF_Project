@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class HealthBar : MonoBehaviour
     
     private int health;
     private float maxWidth, width, height, twoPermille;
+    Color green, yellow, orange, red;
 
     void Start()
     {
@@ -14,12 +16,17 @@ public class HealthBar : MonoBehaviour
         maxWidth = healthbar.GetComponent<RectTransform>().localScale.x;
         height = healthbar.GetComponent<RectTransform>().localScale.y;
         width = maxWidth;
+        green = healthbar.GetComponent<Image>().color;
+        yellow = new Color32(255, 222, 1, 255);
+        orange = new Color32(255, 120, 1, 255);
+        red = new Color32(225, 7, 7, 255);
     }
 
     void Update()
     {
         health = player.GetComponent<Player>().health;
         scaleHealthbar();
+        colorHealthbar();
     }
 
     void scaleHealthbar() 
@@ -39,5 +46,25 @@ public class HealthBar : MonoBehaviour
             width = maxWidth;
 
         healthbar.GetComponent<RectTransform>().localScale = new Vector3(width, height, 1);
+    }
+
+    void colorHealthbar()
+    {
+        if (health > 50)
+        {
+            healthbar.GetComponent<Image>().color = green;
+        }
+        else if (health > 25 && health <= 50)
+        {
+            healthbar.GetComponent<Image>().color = yellow;
+        }
+        else if (health <= 25 && health > 10)
+        {
+            healthbar.GetComponent<Image>().color = orange;
+        }
+        else if (health <= 10)
+        {
+            healthbar.GetComponent<Image>().color = red;
+        }
     }
 }
