@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class QuestEvent
 {
-    public enum EventStatus 
-    { 
+    public enum EventStatus
+    {
         WAITING,
         CURRENT,
         DONE
@@ -16,8 +16,9 @@ public class QuestEvent
     //DONE - has been achieved
 
     public string name, description, id;
-    public int order = -1; 
+    public int order = -1;
     public EventStatus status;
+    public QuestButton button;
 
     public List<QuestPath> pathlist = new List<QuestPath>();
 
@@ -32,6 +33,7 @@ public class QuestEvent
     public void UpdateQuestEvent(EventStatus es)
     {
         status = es;
+        button.UpdateButton(es);
     }
 
     public string GetId()

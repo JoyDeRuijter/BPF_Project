@@ -361,6 +361,7 @@ namespace UnityEngine.AI
         }
 
 #if UNITY_EDITOR
+        //[System.Obsolete] // comment out if errors
         bool UnshareNavMeshAsset()
         {
             // Nothing to unshare

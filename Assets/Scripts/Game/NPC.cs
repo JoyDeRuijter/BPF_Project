@@ -66,7 +66,6 @@ public class NPC : MonoBehaviour
         {
             transform.LookAt(player.transform.position);
             agent.SetDestination(hit.point);
-            Debug.Log(hit);
         }
     }
 

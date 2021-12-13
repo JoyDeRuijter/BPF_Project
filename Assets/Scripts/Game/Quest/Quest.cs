@@ -7,7 +7,7 @@ public class Quest
     public List<QuestEvent> questEvents = new List<QuestEvent>();
 
     public Quest()
-    { 
+    {
     }
 
     public QuestEvent AddQuestEvent(string n, string d)
@@ -30,7 +30,7 @@ public class Quest
     }
 
     QuestEvent FindQuestEvent(string id)
-    { 
+    {
         foreach (QuestEvent n in questEvents)
         {
             if (n.GetId() == id)
