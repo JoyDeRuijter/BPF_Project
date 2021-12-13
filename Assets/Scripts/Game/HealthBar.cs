@@ -6,12 +6,13 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private GameObject player;
     
     private int health;
-    private float maxWidth, width, onePermille;
+    private float maxWidth, width, height, twoPermille;
 
     void Start()
     {
         health = player.GetComponent<Player>().health;
         maxWidth = healthbar.GetComponent<RectTransform>().localScale.x;
+        height = healthbar.GetComponent<RectTransform>().localScale.y;
         width = maxWidth;
     }
 
@@ -23,13 +24,13 @@ public class HealthBar : MonoBehaviour
 
     void scaleHealthbar() 
     {
-        onePermille = maxWidth / 1000;
+        twoPermille = maxWidth / 500;
 
-        if (width > health * 3.5)
-            width -= onePermille;
+        if (width > health * (maxWidth/100))
+            width -= twoPermille;
 
-        if (health * 3.5 > width)
-            width += onePermille;
+        if (health * (maxWidth / 100) > width)
+            width += twoPermille;
 
         if (width <= 0)
             width = 0;
@@ -37,6 +38,6 @@ public class HealthBar : MonoBehaviour
         if (width >= maxWidth)
             width = maxWidth;
 
-        healthbar.GetComponent<RectTransform>().localScale = new Vector3(width, 50, 1);
+        healthbar.GetComponent<RectTransform>().localScale = new Vector3(width, height, 1);
     }
 }
