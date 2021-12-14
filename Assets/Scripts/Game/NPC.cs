@@ -16,6 +16,7 @@ public class NPC : MonoBehaviour
     private RaycastHit hit;
     private Ray ray;
     private Animator anim;
+    public bool wantedIsKilled { get; private set; }
 
     private enum NPCtype 
     { 
@@ -28,6 +29,7 @@ public class NPC : MonoBehaviour
 
     void Start()
     {
+        wantedIsKilled = false;
         damage = 5;
         health = 100f;
         alreadyAttacked = false;
@@ -137,8 +139,11 @@ public class NPC : MonoBehaviour
         player.GetComponent<Player>().currentXp += 10;
 
         if (npcType == NPCtype.Wanted)
+        {
+            Debug.Log("npc set is killed to true");
+            GameObject.FindGameObjectWithTag("KillManager").GetComponent<QuestKill>().isKilled = true;
             SpawnBounty();
-
+        }
         Destroy(gameObject);
     }
 
