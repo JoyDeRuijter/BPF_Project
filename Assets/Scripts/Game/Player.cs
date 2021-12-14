@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private XpDisplay xp;
+    [SerializeField] private XpDisplay xp;
     public int health, maxHealth, currentXp, currentLevel, xpNeeded;
+    public bool isLevelingUp;
 
     void Start()
     {
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
         currentXp = 0;
         xpNeeded = 100;
         currentLevel = 1;
+        isLevelingUp = false;
     }
 
     void Update()
@@ -31,14 +33,14 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Player died");
+        //Debug.Log("Player died");
     }
 
     private void SetLevel()
     {
         if (currentXp >= xpNeeded)
         {
-            xp.XpPopUp();
+            isLevelingUp = true;
             currentLevel++;
             xpNeeded *= currentLevel;
             currentXp = 0;

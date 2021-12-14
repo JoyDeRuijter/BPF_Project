@@ -10,6 +10,7 @@ TagManager:
   - BountyEffect
   - XpCounter
   - LevelCounter
+  - LevelUp
   layers:
   - Default
   - TransparentFX

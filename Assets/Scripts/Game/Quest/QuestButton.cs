@@ -16,7 +16,6 @@ public class QuestButton : MonoBehaviour
 
     private void Awake()
     {
-        //buttonComponent.onClick.AddListener(ClickHandler);
         CompassFocus();
         compassController = GameObject.Find("Compass").GetComponent<CompassController>();
     }
