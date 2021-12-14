@@ -40,16 +40,21 @@ public class Player : MonoBehaviour
     {
         if (currentXp >= xpNeeded)
         {
-            isLevelingUp = true;
-            currentLevel++;
-            xpNeeded *= currentLevel;
-            currentXp = 0;
-            maxHealth += 20;
-
-            if (health + 20 <= maxHealth)
-                health += 20;
-            else
-                health = maxHealth;
+            LevelUp();
         }
+    }
+
+    private void LevelUp()
+    {
+        isLevelingUp = true;
+        currentLevel++;
+        currentXp -= xpNeeded;
+        xpNeeded *= currentLevel;
+        
+        maxHealth += 20;
+        if (health + 25 <= maxHealth)
+            health += 25;
+        else
+            health = maxHealth;
     }
 }

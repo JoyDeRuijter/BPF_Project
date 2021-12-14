@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private GameObject healthbar;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject healthbar, player, maxHealthDisplay;
     
     private int health, maxHealth;
     private float maxWidth, width, height, twoPermille;
@@ -27,11 +26,12 @@ public class HealthBar : MonoBehaviour
     {
         health = player.GetComponent<Player>().health;
         maxHealth = player.GetComponent<Player>().health;
-        scaleHealthbar();
-        colorHealthbar();
+        ScaleHealthbar();
+        ColorHealthbar();
+        DisplayMaxHealth();
     }
 
-    void scaleHealthbar() 
+    private void ScaleHealthbar() 
     {
         twoPermille = maxWidth / 500;
 
@@ -50,7 +50,7 @@ public class HealthBar : MonoBehaviour
         healthbar.GetComponent<RectTransform>().localScale = new Vector3(width, height, 1);
     }
 
-    void colorHealthbar()
+    private void ColorHealthbar()
     {
         if (health > (maxHealth / 2))
         {
@@ -68,5 +68,10 @@ public class HealthBar : MonoBehaviour
         {
             healthbar.GetComponent<Image>().color = red;
         }
+    }
+
+    private void DisplayMaxHealth()
+    {
+        maxHealthDisplay.GetComponent<Text>().text = "MAX: " + player.GetComponent<Player>().maxHealth;
     }
 }

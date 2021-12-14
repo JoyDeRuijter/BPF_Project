@@ -134,7 +134,9 @@ public class NPC : MonoBehaviour
 
     private void Die()
     {
-        if(npcType == NPCtype.Wanted)
+        player.GetComponent<Player>().currentXp += 10;
+
+        if (npcType == NPCtype.Wanted)
             SpawnBounty();
 
         Destroy(gameObject);
