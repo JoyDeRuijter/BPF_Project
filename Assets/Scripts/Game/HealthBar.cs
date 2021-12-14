@@ -6,13 +6,14 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private GameObject healthbar;
     [SerializeField] private GameObject player;
     
-    private int health;
+    private int health, maxHealth;
     private float maxWidth, width, height, twoPermille;
     Color green, yellow, orange, red;
 
     void Start()
     {
         health = player.GetComponent<Player>().health;
+        maxHealth = player.GetComponent<Player>().health;
         maxWidth = healthbar.GetComponent<RectTransform>().localScale.x;
         height = healthbar.GetComponent<RectTransform>().localScale.y;
         width = maxWidth;
@@ -25,6 +26,7 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         health = player.GetComponent<Player>().health;
+        maxHealth = player.GetComponent<Player>().health;
         scaleHealthbar();
         colorHealthbar();
     }
@@ -50,19 +52,19 @@ public class HealthBar : MonoBehaviour
 
     void colorHealthbar()
     {
-        if (health > 50)
+        if (health > (maxHealth / 2))
         {
             healthbar.GetComponent<Image>().color = green;
         }
-        else if (health > 25 && health <= 50)
+        else if (health > (maxHealth / 4) && health <= (maxHealth / 2))
         {
             healthbar.GetComponent<Image>().color = yellow;
         }
-        else if (health <= 25 && health > 10)
+        else if (health <= (maxHealth / 4) && health > (maxHealth / 10))
         {
             healthbar.GetComponent<Image>().color = orange;
         }
-        else if (health <= 10)
+        else if (health <= (maxHealth / 10))
         {
             healthbar.GetComponent<Image>().color = red;
         }

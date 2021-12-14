@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int health, currentXp, currentLevel, xpNeeded;
+    private XpDisplay xp;
+    public int health, maxHealth, currentXp, currentLevel, xpNeeded;
 
     void Start()
     {
+        maxHealth = 100;
         health = 100;
         currentXp = 0;
         xpNeeded = 100;
@@ -36,9 +38,16 @@ public class Player : MonoBehaviour
     {
         if (currentXp >= xpNeeded)
         {
+            xp.XpPopUp();
             currentLevel++;
             xpNeeded *= currentLevel;
             currentXp = 0;
+            maxHealth += 20;
+
+            if (health + 20 <= maxHealth)
+                health += 20;
+            else
+                health = maxHealth;
         }
     }
 }
