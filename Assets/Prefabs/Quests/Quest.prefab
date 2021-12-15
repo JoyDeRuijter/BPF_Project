@@ -207,12 +207,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977eaa0e542c40046ab88bead3fe9a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questButton: {fileID: 8682822155279146265}
   buttonComponent: {fileID: 8682822155279146267}
   icon: {fileID: 7481091297162190946}
   eventName: {fileID: 8682822156557781660}
   currentImage: {fileID: 21300000, guid: e08af70664bc0164bbd3ee69a4540290, type: 3}
   waitingImage: {fileID: 21300000, guid: bda5c26accbc0e346b38f3cb0046d56a, type: 3}
   doneImage: {fileID: 21300000, guid: beaf0cc57cc98c245bd9d3d8061eb38a, type: 3}
+  compassController: {fileID: 0}
 --- !u!1 &8682822156557781650
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class QuestButton : MonoBehaviour
 {
+    public GameObject questButton;
     public Button buttonComponent;
     public RawImage icon;
     public Text eventName;
@@ -37,6 +38,8 @@ public class QuestButton : MonoBehaviour
         {
             icon.texture = doneImage.texture;
             buttonComponent.interactable = false;
+            StartCoroutine(UpdateMissionLog(1.5f));
+            ScaleMissionLog();
         }
         else if (status == QuestEvent.EventStatus.WAITING)
         {
@@ -57,5 +60,16 @@ public class QuestButton : MonoBehaviour
         //Set compass controller to point toward the location of this event
         if (status == QuestEvent.EventStatus.CURRENT)
             compassController.target = thisEvent.location;
+    }
+
+    private IEnumerator UpdateMissionLog(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        questButton.SetActive(false);
+    }
+
+    private void ScaleMissionLog()
+    {
+
     }
 }
