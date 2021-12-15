@@ -11,12 +11,8 @@ public class QuestKill : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isKilled);
         if (isKilled)
-        {
-            Debug.Log("isKilled is true");
             WantedNPCIsKilled();
-        }   
     }
 
     private void WantedNPCIsKilled()
@@ -24,10 +20,9 @@ public class QuestKill : MonoBehaviour
         if (qEvent.status != QuestEvent.EventStatus.CURRENT)
             return;
 
-            Debug.Log("you killed the wanted npc");
-            qEvent.UpdateQuestEvent(QuestEvent.EventStatus.DONE);
-            qButton.UpdateButton(QuestEvent.EventStatus.DONE);
-            qManager.UpdateQuestOnCompletion(qEvent);
+        qEvent.UpdateQuestEvent(QuestEvent.EventStatus.DONE);
+        qButton.UpdateButton(QuestEvent.EventStatus.DONE);
+        qManager.UpdateQuestOnCompletion(qEvent);
     }
 
     public void Setup(QuestManager qm, QuestEvent qe, QuestButton qb)
@@ -35,7 +30,6 @@ public class QuestKill : MonoBehaviour
         qManager = qm;
         qEvent = qe;
         qButton = qb;
-        //setup link between event and button
         qe.button = qButton;
     }
 }

@@ -20,11 +20,6 @@ public class Pickup : MonoBehaviour
             playerEffect = GameObject.FindGameObjectWithTag("BountyEffect").GetComponent<ParticleSystem>();
     }
 
-    void Update()
-    {
-
-    }
-
     void OnParticleCollision(GameObject player)
     {
         playerEffect.Play();

@@ -26,7 +26,6 @@ public class QuestLocation : MonoBehaviour
         qManager = qm;
         qEvent = qe;
         qButton = qb;
-        //setup link between event and button
         qe.button = qButton;
     }
 }

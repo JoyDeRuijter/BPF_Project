@@ -6,7 +6,7 @@ public class CompassController : MonoBehaviour
 {
     public GameObject pointer, target, player;
     public RectTransform compassLine;
-    RectTransform rect;
+    private RectTransform rect;
     private Vector3 startPosition;
 
     void Start()
