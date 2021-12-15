@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class QuestManager : MonoBehaviour
 {
     public Quest quest = new Quest();
-    public GameObject questPrintBox, buttonPrefab, victoryPopup;
+    public GameObject questPrintBox, buttonPrefab, victoryPopup, player;
 
     QuestEvent final;
 
@@ -61,6 +61,7 @@ public class QuestManager : MonoBehaviour
         if (e == final)
         {
             StartCoroutine(DisplayVictoryPopup(3));
+            player.GetComponent<Player>().currentMoney += 500;
             return;
         }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private XpDisplay xp;
-    public int health, maxHealth, currentXp, currentLevel, xpNeeded;
+    public int health, maxHealth, currentXp, currentLevel, xpNeeded, currentMoney;
     public bool isLevelingUp;
 
     void Start()
@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
         currentXp = 0;
         xpNeeded = 100;
         currentLevel = 1;
+        currentMoney = 0;
         isLevelingUp = false;
     }
 

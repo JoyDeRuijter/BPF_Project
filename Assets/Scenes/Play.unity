@@ -18394,6 +18394,7 @@ MonoBehaviour:
   questPrintBox: {fileID: 962037142}
   buttonPrefab: {fileID: 8682822155279146265, guid: bbeced83699514a4182c2e7e525046e5, type: 3}
   victoryPopup: {fileID: 932572774}
+  player: {fileID: 1722680431}
   A: {fileID: 1015949617}
   B: {fileID: 1959879319}
   C: {fileID: 1538762255}
@@ -54003,6 +54004,7 @@ MonoBehaviour:
   currentXp: 0
   currentLevel: 0
   xpNeeded: 0
+  currentMoney: 0
   isLevelingUp: 0
 --- !u!1 &1725794136
 GameObject:
@@ -61090,7 +61092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f623ee32ed2d246ae28831be97963f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMoney: 0
+  player: {fileID: 1722680431}
 --- !u!1001 &1900278250
 PrefabInstance:
   m_ObjectHideFlags: 0
