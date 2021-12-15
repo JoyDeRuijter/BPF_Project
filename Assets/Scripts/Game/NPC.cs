@@ -12,7 +12,7 @@ public class NPC : MonoBehaviour
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private NavMeshAgent agent;
 
-    private bool playerInSightRange, playerInAttackRange, alreadyAttacked, isMoving, isHolstered;
+    private bool playerInSightRange, playerInAttackRange, alreadyAttacked, isMoving, isHolstered, isSitting, isSittingAndGiving;
     private RaycastHit hit;
     private Ray ray;
     private Animator anim;
@@ -22,7 +22,8 @@ public class NPC : MonoBehaviour
     { 
         Friendly,
         Hostile,
-        Wanted
+        Wanted,
+        Interactive
     };
 
     [SerializeField] private NPCtype npcType;
@@ -46,7 +47,6 @@ public class NPC : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         checkType();
-        StartCoroutine(IsMoving());
         UpdateAnimations();
     }
 
@@ -57,6 +57,7 @@ public class NPC : MonoBehaviour
             case NPCtype.Wanted: WantedBehaviour(); break;
             case NPCtype.Hostile: HostileBehaviour(); break;
             case NPCtype.Friendly: FriendlyBehaviour(); break;
+            case NPCtype.Interactive: InteractiveBehaviour(); break;
         }
     }
 
@@ -130,6 +131,11 @@ public class NPC : MonoBehaviour
             anim.SetBool("IsRunning", true);
         else
             anim.SetBool("IsRunning", false);
+
+        if (isSitting)
+            anim.SetBool("IsSitting", true);
+        else
+            anim.SetBool("IsSitting", true);
     }
 
     private void Die()
@@ -151,6 +157,8 @@ public class NPC : MonoBehaviour
             FollowPlayer();
         if (playerInSightRange && playerInAttackRange)
             ShootPlayer();
+
+        StartCoroutine(IsMoving());
     }
 
     private void HostileBehaviour()
@@ -169,10 +177,17 @@ public class NPC : MonoBehaviour
             if (playerInSightRange && playerInAttackRange)
                 ShootPlayer();
         }
+
+        StartCoroutine(IsMoving());
     }
 
     private void FriendlyBehaviour()
     { 
         //Insert friendly behaviour after friendly NPC 
+    }
+
+    private void InteractiveBehaviour()
+    {
+        isSitting = true;
     }
 }
