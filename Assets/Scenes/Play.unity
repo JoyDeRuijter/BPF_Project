@@ -31448,65 +31448,6 @@ Transform:
   m_Father: {fileID: 149043212}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1004400930
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1004400933}
-  - component: {fileID: 1004400932}
-  - component: {fileID: 1004400931}
-  m_Layer: 0
-  m_Name: QuestArea4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1004400931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004400930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c689ac1a02d6634ebc10174937dbfa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qManager: {fileID: 700297756}
-  qButton: {fileID: 2649502456348177414, guid: bbeced83699514a4182c2e7e525046e5, type: 3}
---- !u!65 &1004400932
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004400930}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.4517808, y: 16.912174, z: 1.4305643}
-  m_Center: {x: 0.060956985, y: 7.9560943, z: -0.19076556}
---- !u!4 &1004400933
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004400930}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 167.54, y: -0.42, z: -40.6}
-  m_LocalScale: {x: 2.3589, y: 0.091843404, z: 2.1058}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1006461853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4870264980700268, guid: ee1044c8aa6bcb346b506710f2d6a505, type: 3}
@@ -60144,7 +60085,7 @@ Transform:
   m_LocalScale: {x: 2.3589, y: 0.091843404, z: 2.1058}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1817543092
 GameObject:
@@ -61699,8 +61640,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qManager: {fileID: 700297756}
   qButton: {fileID: 2649502456348177414, guid: bbeced83699514a4182c2e7e525046e5, type: 3}
---- !u!65 &1959879321
-BoxCollider:
+--- !u!135 &1959879321
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -61710,8 +61651,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.4955335
+  m_Center: {x: 0, y: 16.59225, z: 0}
 --- !u!4 &1959879324
 Transform:
   m_ObjectHideFlags: 0
@@ -61720,7 +61661,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959879319}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.010009766, y: -0.531559, z: 0.32884598}
+  m_LocalPosition: {x: -0.010009766, y: -48.9, z: 0.32884598}
   m_LocalScale: {x: 50, y: 3, z: 50}
   m_Children: []
   m_Father: {fileID: 210672382}
@@ -62074,7 +62015,7 @@ Transform:
   - {fileID: 700297757}
   - {fileID: 1684164794}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1992160067
 GameObject:
