@@ -45,21 +45,19 @@ public class NPC : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        switch (npcType) 
-        {
-            case NPCtype.Wanted:
-                WantedBehaviour();
-                break;
-            case NPCtype.Hostile:
-                HostileBehaviour();
-                break;
-            case NPCtype.Friendly:
-                FriendlyBehaviour();
-                break;
-        }
-
+        checkType();
         StartCoroutine(IsMoving());
         UpdateAnimations();
+    }
+
+    private void checkType()
+    {
+        switch (npcType)
+        {
+            case NPCtype.Wanted: WantedBehaviour(); break;
+            case NPCtype.Hostile: HostileBehaviour(); break;
+            case NPCtype.Friendly: FriendlyBehaviour(); break;
+        }
     }
 
     private void FollowPlayer()
