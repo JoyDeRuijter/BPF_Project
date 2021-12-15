@@ -37,7 +37,7 @@ public class QuestManager : MonoBehaviour
         button = CreateButton(c).GetComponent<QuestButton>();
         C.GetComponent<QuestKill>().Setup(this, c, button);
         button = CreateButton(d).GetComponent<QuestButton>();
-        D.GetComponent<QuestLocation>().Setup(this, d, button);
+        D.GetComponent<QuestPickup>().Setup(this, d, button);
         button = CreateButton(e).GetComponent<QuestButton>();
         E.GetComponent<QuestLocation>().Setup(this, e, button);
 

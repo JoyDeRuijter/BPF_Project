@@ -28,7 +28,11 @@ public class Pickup : MonoBehaviour
             player.GetComponent<Player>().health += 15;
 
         if (pickupType == PickupTypes.Bounty)
+        {
+            GameObject.FindGameObjectWithTag("PickupManager").GetComponent<QuestPickup>().isPickedUp = true;
             player.GetComponent<Player>().currentXp += 50;
+        }
+
 
         Destroy(gameObject);
     }
