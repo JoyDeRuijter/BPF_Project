@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         health = player.GetComponent<Player>().health;
-        maxHealth = player.GetComponent<Player>().health;
+        maxHealth = player.GetComponent<Player>().maxHealth;
         ScaleHealthbar();
         ColorHealthbar();
         DisplayMaxHealth();
