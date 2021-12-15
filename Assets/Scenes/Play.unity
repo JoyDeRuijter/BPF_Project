@@ -18397,7 +18397,7 @@ MonoBehaviour:
   A: {fileID: 1015949617}
   B: {fileID: 1959879319}
   C: {fileID: 1538762255}
-  D: {fileID: 1004400930}
+  D: {fileID: 1684164793}
   E: {fileID: 1813259152}
 --- !u!4 &700297757
 Transform:
@@ -53440,6 +53440,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1684164793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1684164794}
+  - component: {fileID: 1684164795}
+  m_Layer: 0
+  m_Name: PickupManager
+  m_TagString: PickupManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1684164794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684164793}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1984779374}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1684164795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684164793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b5cfa73804fc44c9b32756e5ce7cc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qManager: {fileID: 700297756}
+  qButton: {fileID: 2649502456348177414, guid: bbeced83699514a4182c2e7e525046e5, type: 3}
+  isPickedUp: 0
 --- !u!1 &1687132949
 GameObject:
   m_ObjectHideFlags: 0
@@ -62024,6 +62070,7 @@ Transform:
   - {fileID: 1538762257}
   - {fileID: 1616872531}
   - {fileID: 700297757}
+  - {fileID: 1684164794}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

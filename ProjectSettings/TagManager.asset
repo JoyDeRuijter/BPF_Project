@@ -12,6 +12,7 @@ TagManager:
   - LevelCounter
   - LevelUp
   - KillManager
+  - PickupManager
   layers:
   - Default
   - TransparentFX

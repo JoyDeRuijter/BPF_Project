@@ -140,7 +140,6 @@ public class NPC : MonoBehaviour
 
         if (npcType == NPCtype.Wanted)
         {
-            Debug.Log("npc set is killed to true");
             GameObject.FindGameObjectWithTag("KillManager").GetComponent<QuestKill>().isKilled = true;
             SpawnBounty();
         }

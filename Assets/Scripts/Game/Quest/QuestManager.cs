@@ -60,7 +60,6 @@ public class QuestManager : MonoBehaviour
     {
         if (e == final)
         {
-            Debug.Log("quest completed");
             StartCoroutine(DisplayVictoryPopup(3));
             return;
         }
