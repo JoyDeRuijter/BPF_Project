@@ -31,7 +31,7 @@ public class QuestManager : MonoBehaviour
         quest.BFS(a.GetId());
 
         QuestButton button = CreateButton(a).GetComponent<QuestButton>();
-        A.GetComponent<QuestLocation>().Setup(this, a, button);
+        A.GetComponent<QuestInteraction>().Setup(this, a, button);
         button = CreateButton(b).GetComponent<QuestButton>();
         B.GetComponent<QuestLocation>().Setup(this, b, button);
         button = CreateButton(c).GetComponent<QuestButton>();

@@ -6,13 +6,13 @@ public class NPC : MonoBehaviour
 {
     [SerializeField] private float health, sightRange, attackRange, timeBetweenAttacks;
     [SerializeField] private int damage;
-    [SerializeField] private GameObject player, impactEffect, bountyHead, npc, npcWeapon;
+    [SerializeField] private GameObject player, impactEffect, bountyHead, npc, npcWeapon, questArea, missionPopup;
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask whatIsGround, whatIsPlayer;
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private NavMeshAgent agent;
 
-    private bool playerInSightRange, playerInAttackRange, alreadyAttacked, isMoving, isHolstered, isSitting, isSittingAndGiving;
+    private bool playerInSightRange, playerInAttackRange, alreadyAttacked, isMoving, isHolstered, missionIsShowing;
     private RaycastHit hit;
     private Ray ray;
     private Animator anim;
@@ -36,6 +36,11 @@ public class NPC : MonoBehaviour
         alreadyAttacked = false;
         anim = npc.GetComponent<Animator>();
         isHolstered = player.GetComponentInChildren<WeaponSwitching>().isHolstered;
+
+        if (npcType != NPCtype.Interactive)
+            questArea = null;
+
+        missionIsShowing = false;
     }
 
     void Update()
@@ -131,11 +136,6 @@ public class NPC : MonoBehaviour
             anim.SetBool("IsRunning", true);
         else
             anim.SetBool("IsRunning", false);
-
-        if (isSitting)
-            anim.SetBool("IsSitting", true);
-        else
-            anim.SetBool("IsSitting", true);
     }
 
     private void Die()
@@ -152,6 +152,7 @@ public class NPC : MonoBehaviour
 
     private void WantedBehaviour()
     {
+        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         Patrol();
         if (playerInSightRange && !playerInAttackRange)
             FollowPlayer();
@@ -163,6 +164,7 @@ public class NPC : MonoBehaviour
 
     private void HostileBehaviour()
     {
+        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         if (isHolstered)
         {
             Patrol();
@@ -188,6 +190,24 @@ public class NPC : MonoBehaviour
 
     private void InteractiveBehaviour()
     {
-        isSitting = true;
+        transform.LookAt(player.transform.position);
+        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+
+        if (questArea.GetComponent<AreaCollision>().isColliding && Input.GetKeyDown(KeyCode.E) && !missionIsShowing)
+        {
+            GameObject.FindGameObjectWithTag("InteractionManager").GetComponent<QuestInteraction>().isInteracting = true;
+            missionPopup.SetActive(true);
+            missionIsShowing = true;
+        }
+        else if (questArea.GetComponent<AreaCollision>().isColliding && Input.GetKeyDown(KeyCode.E) && missionIsShowing)
+        {
+            GameObject.FindGameObjectWithTag("InteractionManager").GetComponent<QuestInteraction>().isInteracting = false;
+            missionPopup.SetActive(false);
+            missionIsShowing = false;
+        }
+
+        //else
+        // GameObject.FindGameObjectWithTag("InteractionManager").GetComponent<QuestInteraction>().isInteracting = false;
+
     }
 }
