@@ -205,9 +205,5 @@ public class NPC : MonoBehaviour
             missionPopup.SetActive(false);
             missionIsShowing = false;
         }
-
-        //else
-        // GameObject.FindGameObjectWithTag("InteractionManager").GetComponent<QuestInteraction>().isInteracting = false;
-
     }
 }
