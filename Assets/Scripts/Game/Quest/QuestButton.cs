@@ -11,7 +11,7 @@ public class QuestButton : MonoBehaviour
     public Text eventName;
     public Sprite currentImage, waitingImage, doneImage;
     public QuestEvent thisEvent;
-    public CompassController compassController;
+    private CompassController compassController;
 
     QuestEvent.EventStatus status;
 
