@@ -62,6 +62,7 @@ public class QuestManager : MonoBehaviour
         {
             StartCoroutine(DisplayVictoryPopup(3));
             player.GetComponent<Player>().currentMoney += 500;
+            player.GetComponent<Player>().currentXp += 100;
             return;
         }
 
