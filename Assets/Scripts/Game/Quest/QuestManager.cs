@@ -21,6 +21,7 @@ public class QuestManager : MonoBehaviour
         QuestEvent d = quest.AddQuestEvent("Collect the evidence", "Pick up the bounty skull", D);
         QuestEvent e = quest.AddQuestEvent("Collect your bounty", "Meet with the sheriff", E);
 
+
         //define the paths between the events - e.g. the order they must be completed
         quest.AddPath(a.GetId(), b.GetId());
         quest.AddPath(a.GetId(), c.GetId());
