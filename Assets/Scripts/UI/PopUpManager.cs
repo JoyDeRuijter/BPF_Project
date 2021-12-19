@@ -14,7 +14,6 @@ public class PopUpManager : MonoBehaviour
     {
         if (player.GetComponent<Player>().isLevelingUp)
         {
-            Debug.Log("if statement does something");
             StartCoroutine(ShowPopUp());
             player.GetComponent<Player>().isLevelingUp = false;
         }
@@ -22,7 +21,6 @@ public class PopUpManager : MonoBehaviour
 
     private IEnumerator ShowPopUp()
     {
-        Debug.Log("Enumerator does something");
         standardItem.SetActive(false);
         replaceItem.SetActive(true);
         yield return new WaitForSeconds(2);

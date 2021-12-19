@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,44 +6,52 @@ using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour
 {
+    [SerializeField] private GameObject questPrintBox, buttonPrefab, finalPopup, player;
+    [SerializeField] private GameObject A, B, C, D, E;
+    private QuestEvent final;
     public Quest quest = new Quest();
-    public GameObject questPrintBox, buttonPrefab, victoryPopup, player;
 
-    QuestEvent final;
-
-    public GameObject A, B, C, D, E;
+    public List<BaseQuest> quests;
+    public Dictionary<string, BaseQuest> questDictionary = new Dictionary<string, BaseQuest>();
 
     void Start()
     {
-        //create each event
-        QuestEvent a = quest.AddQuestEvent("Sheriff's request", "Meet with the sheriff", A);
-        QuestEvent b = quest.AddQuestEvent("On the loose", "Find the wanted criminal", B);
-        QuestEvent c = quest.AddQuestEvent("Wanted", "Kill the wanted criminal", C);
-        QuestEvent d = quest.AddQuestEvent("Collect the evidence", "Pick up the bounty skull", D);
-        QuestEvent e = quest.AddQuestEvent("Collect your bounty", "Meet with the sheriff", E);
+        List<QuestEvent> questEvents = new List<QuestEvent>();
 
+        foreach (var item in quests)
+        {
+            questDictionary.Add(item.questName, item);
+            QuestEvent questEvent = quest.AddQuestEvent(item.questName, item.questDescription, item.gameObject);
+            questEvents.Add(questEvent);
+        }
 
         //define the paths between the events - e.g. the order they must be completed
-        quest.AddPath(a.GetId(), b.GetId());
-        quest.AddPath(a.GetId(), c.GetId());
-        quest.AddPath(b.GetId(), c.GetId());
-        quest.AddPath(c.GetId(), d.GetId());
-        quest.AddPath(d.GetId(), e.GetId());
+        quest.AddPath(questEvents[0].GetId(), questEvents[1].GetId());
+        quest.AddPath(questEvents[0].GetId(), questEvents[2].GetId());
+        quest.AddPath(questEvents[1].GetId(), questEvents[2].GetId());
+        quest.AddPath(questEvents[2].GetId(), questEvents[3].GetId());
+        quest.AddPath(questEvents[3].GetId(), questEvents[4].GetId());
 
-        quest.BFS(a.GetId());
+        quest.BFS(questEvents[0].GetId());
 
-        QuestButton button = CreateButton(a).GetComponent<QuestButton>();
-        A.GetComponent<QuestInteraction>().Setup(this, a, button);
-        button = CreateButton(b).GetComponent<QuestButton>();
-        B.GetComponent<QuestLocation>().Setup(this, b, button);
-        button = CreateButton(c).GetComponent<QuestButton>();
-        C.GetComponent<QuestKill>().Setup(this, c, button);
-        button = CreateButton(d).GetComponent<QuestButton>();
-        D.GetComponent<QuestPickup>().Setup(this, d, button);
-        button = CreateButton(e).GetComponent<QuestButton>();
-        E.GetComponent<QuestLocation>().Setup(this, e, button);
+        QuestButton button = CreateButton(questEvents[0]).GetComponent<QuestButton>();
+        A.GetComponent<BaseQuest>().Setup(this, questEvents[0], button);
+        button = CreateButton(questEvents[1]).GetComponent<QuestButton>();
+        B.GetComponent<QuestLocation>().Setup(this, questEvents[1], button);
+        button = CreateButton(questEvents[2]).GetComponent<QuestButton>();
+        C.GetComponent<QuestKill>().Setup(this, questEvents[2], button);
+        button = CreateButton(questEvents[3]).GetComponent<QuestButton>();
+        D.GetComponent<QuestPickup>().Setup(this, questEvents[3], button);
+        button = CreateButton(questEvents[4]).GetComponent<QuestButton>();
+        E.GetComponent<QuestLocation>().Setup(this, questEvents[4], button);
 
-        final = e;
+        final = questEvents[4];
+
+        //BaseQuest quest = A.GetComponent<BaseQuest>();
+        if (quest.GetType() == typeof(QuestLocation))
+        { 
+            
+        }
     }
 
     GameObject CreateButton(QuestEvent e)
@@ -80,9 +89,9 @@ public class QuestManager : MonoBehaviour
 
     private IEnumerator DisplayVictoryPopup(float seconds)
     {
-        victoryPopup.SetActive(true);
+        finalPopup.SetActive(true);
         yield return new WaitForSeconds(seconds);
-        victoryPopup.SetActive(false);
+        finalPopup.SetActive(false);
     }
 
 }

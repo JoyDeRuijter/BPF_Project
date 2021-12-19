@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestLocation : MonoBehaviour
+public class QuestLocation : BaseQuest
 {
-    public QuestManager qManager;
-    public QuestEvent qEvent;
-    public QuestButton qButton;
-
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag != "Player") 
@@ -19,13 +15,5 @@ public class QuestLocation : MonoBehaviour
         qEvent.UpdateQuestEvent(QuestEvent.EventStatus.DONE);
         qButton.UpdateButton(QuestEvent.EventStatus.DONE);
         qManager.UpdateQuestOnCompletion(qEvent);
-    }
-
-    public void Setup(QuestManager qm, QuestEvent qe, QuestButton qb)
-    {
-        qManager = qm;
-        qEvent = qe;
-        qButton = qb;
-        qe.button = qButton;
     }
 }
