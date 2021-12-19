@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +5,11 @@ public class Quest
 {
     public List<QuestEvent> questEvents = new List<QuestEvent>();
 
-    public Quest()
-    {
-    }
+    public Quest() {}
 
     public QuestEvent AddQuestEvent(string n, string d, GameObject l)
     {
+        //Add questevent to list
         QuestEvent questEvent = new QuestEvent(n, d, l);
         questEvents.Add(questEvent);
         return questEvent;
@@ -19,6 +17,7 @@ public class Quest
 
     public void AddPath(string fromQuestEvent, string toQuestEvent)
     {
+        //Create a path between two questevents
         QuestEvent from = FindQuestEvent(fromQuestEvent);
         QuestEvent to = FindQuestEvent(toQuestEvent);
 
@@ -31,6 +30,7 @@ public class Quest
 
     QuestEvent FindQuestEvent(string id)
     {
+        //Find and return questevent by id
         foreach (QuestEvent n in questEvents)
         {
             if (n.GetId() == id)
@@ -39,9 +39,9 @@ public class Quest
         return null;
     }
 
-    // Breadth first search
     public void BFS(string id, int orderNumber = 1)
     {
+        // Breadth first search
         QuestEvent thisEvent = FindQuestEvent(id);
         thisEvent.order = orderNumber;
 

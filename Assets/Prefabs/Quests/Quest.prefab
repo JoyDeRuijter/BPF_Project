@@ -210,7 +210,7 @@ MonoBehaviour:
   questButton: {fileID: 8682822155279146265}
   buttonComponent: {fileID: 8682822155279146267}
   icon: {fileID: 7481091297162190946}
-  eventName: {fileID: 8682822156557781660}
+  eventText: {fileID: 8682822156557781660}
   currentImage: {fileID: 21300000, guid: e08af70664bc0164bbd3ee69a4540290, type: 3}
   waitingImage: {fileID: 21300000, guid: bda5c26accbc0e346b38f3cb0046d56a, type: 3}
   doneImage: {fileID: 21300000, guid: beaf0cc57cc98c245bd9d3d8061eb38a, type: 3}
