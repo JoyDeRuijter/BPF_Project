@@ -10,12 +10,12 @@ public class GameSceneManager : MonoBehaviour
 
     void Start()
     {
-        playerHealth = player.GetComponent<Player>().health;
+        playerHealth = player.GetComponent<Player>().currentHealth;
     }
 
     void Update()
     {
-        playerHealth = player.GetComponent<Player>().health;
+        playerHealth = player.GetComponent<Player>().currentHealth;
         if (playerHealth == 0)
             SceneManager.LoadScene("Death");
     }

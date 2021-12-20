@@ -28,7 +28,7 @@ public class Pickup : MonoBehaviour
         playerEffect.Play();
 
         if(pickupType == PickupTypes.Health)
-            player.GetComponent<Player>().health += 15;
+            player.GetComponent<Player>().currentHealth += 15;
 
         if (pickupType == PickupTypes.Bounty)
         {

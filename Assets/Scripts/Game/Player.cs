@@ -2,22 +2,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private XpDisplay xp;
-    public int health;
-    [HideInInspector]
-    public int maxHealth;
+    #region Variables
+    [Header("Player Attributes")]
+    public int currentHealth;
     public int currentXp;
-    [HideInInspector]
-    public int currentLevel;
-    public int xpNeeded;
     public int currentMoney;
+
+    [Header("Reference")]
+    [Space(10)]
+    [SerializeField] private XpDisplay xp;
+    
+    [HideInInspector]
+    public int xpNeeded, currentLevel, maxHealth;
     [HideInInspector]
     public bool isLevelingUp;
+    #endregion
 
-    void Start()
+    void Awake()
     {
         maxHealth = 100;
-        health = 100;
+        currentHealth = 100;
         currentXp = 0;
         xpNeeded = 100;
         currentLevel = 1;
@@ -32,10 +36,10 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        health -= amount;
-        if (health <= 0f)
+        currentHealth -= amount;
+        if (currentHealth <= 0f)
         {
-            health = 0;
+            currentHealth = 0;
             Die();
         }
     }
@@ -61,9 +65,9 @@ public class Player : MonoBehaviour
         xpNeeded *= currentLevel;
         
         maxHealth += 20;
-        if (health + 25 <= maxHealth)
-            health += 25;
+        if (currentHealth + 25 <= maxHealth)
+            currentHealth += 25;
         else
-            health = maxHealth;
+            currentHealth = maxHealth;
     }
 }

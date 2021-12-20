@@ -2,19 +2,26 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed, gravity, jumpHeight;
-    [SerializeField] private LayerMask groundMask;
-    [SerializeField] private GameObject cowboy;
+    #region Variables
+    [Header ("Player Properties")]
+    [SerializeField] private float speed;
+    [SerializeField] private float gravity;
+    [SerializeField] private float jumpHeight;
 
-    private float groundDistance, capsuleHeight, walkSpeed, runSpeed;
-    private bool isGrounded, isMoving, isCrouching, isWalking, isRunning, isJumping, isFalling;
+    [Header ("References")]
+    [Space(10)]
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private GameObject playerModel;
+
+    private float groundDistance, walkSpeed, runSpeed;
+    private bool isGrounded, isMoving, isWalking, isRunning, isJumping, isFalling;
     private CharacterController controller;
     private Animator anim;
-    private CapsuleCollider capCollider;
     private Transform groundCheck;
-    private Vector3 velocity, capsuleCenter;
+    private Vector3 velocity;
+    #endregion 
 
-    void Start()
+    void Awake()
     {
         walkSpeed = 12f;
         runSpeed = 20f;
@@ -24,10 +31,7 @@ public class PlayerMovement : MonoBehaviour
         groundDistance = 0.4f;
         controller = GetComponent<CharacterController>();
         groundCheck = GameObject.Find("Player/GroundCheck").GetComponent<Transform>();
-        anim = cowboy.GetComponent<Animator>();
-        capCollider = cowboy.GetComponent<CapsuleCollider>();
-        capsuleHeight = capCollider.height;
-        capsuleCenter = capCollider.center;
+        anim = playerModel.GetComponent<Animator>();
     }
 
     void Update()
@@ -44,11 +48,13 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
+        //Check if the there is any input and therefore if the player should move
         if (x != 0 || z != 0)
             isMoving = true;
         else
             isMoving = false;
 
+        //Determine whether the player is walking or running using the speed value
         if (speed == walkSpeed && isMoving)
         {
             isWalking = true;
@@ -65,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
             isRunning = false;
         }
 
+        //Transform the player position using the directions and speed
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
     }
@@ -77,17 +84,13 @@ public class PlayerMovement : MonoBehaviour
             speed = 12f;
     }
 
-    private void PlayerCrouch()
-    { 
-    
-    }
-
     private void PlayerJump()
     {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+        //Determine whether the player is jumping or falling using the velocity
         if (velocity.y > 2)
         {
             isJumping = true;
@@ -107,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandlePhysics()
     {
+        //Use a groundcheck sphere to check if the player is on the ground
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
@@ -121,7 +125,6 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("IsGrounded", isGrounded);
         anim.SetBool("IsWalking", isWalking);
         anim.SetBool("IsRunning", isRunning);
-        anim.SetBool("IsCrouching", isCrouching);
         anim.SetBool("IsJumping", isJumping);
         anim.SetBool("IsFalling", isFalling);
     }

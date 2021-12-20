@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class QuestKeyInput : BaseQuest
 {
+    #region Variables
     [SerializeField] private string key;
     private KeyCode keyCode;
+    #endregion
 
     private void Awake()
     {
