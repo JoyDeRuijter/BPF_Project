@@ -1,14 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PopUpManager : MonoBehaviour
 {
-    [SerializeField] private GameObject player, standardItem, replaceItem;
-
-    void Start()
-    {
-    }
+    #region
+    [Header ("Gameobject references")]
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject standardItem; 
+    [SerializeField] private GameObject replaceItem;
+    #endregion
 
     void Update()
     {

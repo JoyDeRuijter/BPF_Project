@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AreaCollision : MonoBehaviour
 {
+    [HideInInspector]
     public bool isColliding;
 
     private void OnTriggerEnter(Collider collider)

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
+    #region Variables
     [SerializeField] private ParticleSystem playerEffect;
 
     private enum PickupTypes
@@ -13,8 +14,9 @@ public class Pickup : MonoBehaviour
     };
 
     [SerializeField] private PickupTypes pickupType;
+    #endregion
 
-    void Start()
+    void Awake()
     {
         if (pickupType == PickupTypes.Bounty)
             playerEffect = GameObject.FindGameObjectWithTag("BountyEffect").GetComponent<ParticleSystem>();
@@ -22,6 +24,7 @@ public class Pickup : MonoBehaviour
 
     void OnParticleCollision(GameObject player)
     {
+        //If the player collides with a pickup, give the effect to the player and destroy the pickup
         playerEffect.Play();
 
         if(pickupType == PickupTypes.Health)
@@ -32,8 +35,6 @@ public class Pickup : MonoBehaviour
             GameObject.FindGameObjectWithTag("PickupManager").GetComponent<QuestPickup>().isPickedUp = true;
             player.GetComponent<Player>().currentXp += 50;
         }
-
-
         Destroy(gameObject);
     }
 }

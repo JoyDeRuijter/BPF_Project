@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    #region Variables
+    [Range (150f, 450f)]
     [SerializeField] private float mouseSensitivity;
 
     private float yRotation;
     private Transform playerBody;
+    #endregion
 
-    void Start()
+    void Awake()
     {
         mouseSensitivity = 300f;
         yRotation = 0;
