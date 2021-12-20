@@ -8,8 +8,9 @@ public class MoneyCounter : Counter
         counter = GameObject.FindGameObjectWithTag("MoneyCounter").GetComponent<Text>();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         value = player.GetComponent<Player>().currentMoney;
     }
 }

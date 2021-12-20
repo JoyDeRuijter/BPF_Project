@@ -64,7 +64,7 @@ public class Gun : MonoBehaviour
 
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            NPC npc = hit.transform.GetComponent<NPC>();
+            HostileNPC npc = hit.transform.GetComponent<HostileNPC>();
 
             if (npc != null)
                 npc.TakeDamage(damage);

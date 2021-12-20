@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
 {
+    #region Variables
+    [Header ("References")]
     public GameObject player;
     public Text counter;
+    [HideInInspector]
     public int value;
+    #endregion
 
-    private void Update()
+    protected virtual void Update()
     {
         DisplayCounter();
     }
@@ -18,5 +20,4 @@ public class Counter : MonoBehaviour
     {
         counter.text = "" + value;
     }
-
 }

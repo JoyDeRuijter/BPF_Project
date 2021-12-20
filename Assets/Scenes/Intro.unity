@@ -9590,13 +9590,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe0c5d469730434383bcf2edf7bdffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xp: {fileID: 1634248680}
-  health: 0
-  maxHealth: 0
+  currentHealth: 0
   currentXp: 0
-  currentLevel: 0
-  xpNeeded: 0
   currentMoney: 0
+  xp: {fileID: 1634248680}
+  xpNeeded: 0
+  currentLevel: 0
+  maxHealth: 0
   isLevelingUp: 0
 --- !u!114 &530164041
 MonoBehaviour:
@@ -9616,7 +9616,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  cowboy: {fileID: 1099986936}
+  playerModel: {fileID: 1099986936}
 --- !u!143 &530164042
 CharacterController:
   m_ObjectHideFlags: 0
@@ -15545,6 +15545,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 530164038}
+  counter: {fileID: 0}
+  value: 0
 --- !u!114 &631758685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25353,6 +25355,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qManager: {fileID: 1732286893}
   qButton: {fileID: 2649502456348177414, guid: bbeced83699514a4182c2e7e525046e5, type: 3}
+  questName: 
+  questDescription: 
   isPickedUp: 0
 --- !u!4 &1137819410
 Transform:
@@ -25548,6 +25552,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 530164038}
+  counter: {fileID: 0}
+  value: 0
 --- !u!114 &1162215523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33709,6 +33715,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 530164038}
+  counter: {fileID: 0}
+  value: 0
 --- !u!114 &1634248681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33796,6 +33804,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qManager: {fileID: 1732286893}
   qButton: {fileID: 2649502456348177414, guid: bbeced83699514a4182c2e7e525046e5, type: 3}
+  questName: 
+  questDescription: 
   isKilled: 0
 --- !u!1001 &1641121919
 PrefabInstance:
@@ -34743,13 +34753,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questPrintBox: {fileID: 289826049}
   buttonPrefab: {fileID: 8682822155279146265, guid: bbeced83699514a4182c2e7e525046e5, type: 3}
-  victoryPopup: {fileID: 1939409382}
+  finalPopup: {fileID: 0}
   player: {fileID: 530164038}
-  A: {fileID: 2015374414}
-  B: {fileID: 1745773124}
-  C: {fileID: 1638662087}
-  D: {fileID: 1137819408}
-  E: {fileID: 0}
+  quests: []
 --- !u!1 &1733147333
 GameObject:
   m_ObjectHideFlags: 0
@@ -35020,6 +35026,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qManager: {fileID: 1732286893}
   qButton: {fileID: 2649502456348177414, guid: bbeced83699514a4182c2e7e525046e5, type: 3}
+  questName: 
+  questDescription: 
 --- !u!1 &1750688894
 GameObject:
   m_ObjectHideFlags: 0
@@ -47255,6 +47263,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qManager: {fileID: 1732286893}
   qButton: {fileID: 2649502456348177414, guid: bbeced83699514a4182c2e7e525046e5, type: 3}
+  questName: 
+  questDescription: 
   isInteracting: 0
 --- !u!1001 &2016281091
 PrefabInstance:

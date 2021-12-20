@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class LevelCounter : MonoBehaviour
+public class LevelCounter : Counter
 {
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        counter = GameObject.FindGameObjectWithTag("LevelCounter").GetComponent<Text>();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
+        value = player.GetComponent<Player>().currentLevel;
     }
 }

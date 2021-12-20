@@ -7,10 +7,6 @@ public class Player : MonoBehaviour
     public int currentHealth;
     public int currentXp;
     public int currentMoney;
-
-    [Header("Reference")]
-    [Space(10)]
-    [SerializeField] private XpDisplay xp;
     
     [HideInInspector]
     public int xpNeeded, currentLevel, maxHealth;

@@ -10,8 +10,9 @@ public class XpCounter : Counter
         counter = GameObject.FindGameObjectWithTag("XpCounter").GetComponent<Text>();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         value = player.GetComponent<Player>().currentXp;
         secondValue = player.GetComponent<Player>().xpNeeded;
     }
