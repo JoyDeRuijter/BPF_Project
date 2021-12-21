@@ -4,22 +4,32 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField] private float damage, range, impactForce, fireRate, reloadTime;
+    #region Variables
+    [Header ("Gun Properties")]
+    [SerializeField] private float damage;
+    [SerializeField] private float range;
+    [SerializeField] private float impactForce;
+    [SerializeField] private float fireRate;
+    [SerializeField] private float reloadTime;
     [SerializeField] private int maxAmo;
+
+    [Header ("References")]
+    [Space(20)]
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private GameObject impactEffect;
-    [SerializeField] private Animator gunAnimator, ammoIconAnimator;
+    [SerializeField] private Animator gunAnimator;
+    [SerializeField] private Animator ammoIconAnimator;
 
-    private float nextTimeToFire = 0f;
+    private float nextTimeToFire;
     private int currentAmo;
     private bool isReloading;
     private Camera fpsCam;
     private Text ammoCounter;
+    #endregion
 
-    void Start()
+    void Awake()
     {
         currentAmo = maxAmo;
-        isReloading = false;
         fpsCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         ammoIconAnimator.SetInteger("AmmoCount", currentAmo);
         ammoCounter = GameObject.FindGameObjectWithTag("AmmoCounter").GetComponent<Text>();
@@ -52,10 +62,9 @@ public class Gun : MonoBehaviour
             ammoIconAnimator.SetBool("IsShooting", false);
         }
         ShowAmmo();
-
     }
 
-    void Shoot() 
+    private void Shoot() 
     {
         ammoIconAnimator.SetBool("IsShooting", true);
         muzzleFlash.Play();
@@ -78,7 +87,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    IEnumerator Reload()
+    private IEnumerator Reload()
     {
         isReloading = true;
         gunAnimator.SetBool("Reloading", true);

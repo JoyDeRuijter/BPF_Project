@@ -2,24 +2,26 @@ using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour
 {
+    #region Variables
+    [Header ("Selected Weapon")]
     [SerializeField] private int selectedWeapon = 0;
+
     public bool isHolstered { get; private set; }
+
     private Gun gunScript;
     private GameObject gameObjectCurrentWeapon;
+    #endregion
 
-    void Start()
+    void Awake()
     {
-        isHolstered = false;
         SelectWeapon();
     }
 
     void Update()
     {
-        
         if (!isHolstered)
         { 
             int previousSelectedWeapon = selectedWeapon;
-
             HandleInput();
 
             if (previousSelectedWeapon != selectedWeapon)
