@@ -18,7 +18,6 @@ public class Gun : MonoBehaviour
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private GameObject impactEffect;
     [SerializeField] private Animator gunAnimator;
-    [SerializeField] private Animator ammoIconAnimator;
 
     private float nextTimeToFire;
     private int currentAmo;
@@ -31,7 +30,6 @@ public class Gun : MonoBehaviour
     {
         currentAmo = maxAmo;
         fpsCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        ammoIconAnimator.SetInteger("AmmoCount", currentAmo);
         ammoCounter = GameObject.FindGameObjectWithTag("AmmoCounter").GetComponent<Text>();
     }
 
@@ -39,13 +37,10 @@ public class Gun : MonoBehaviour
     {
         isReloading = false;
         gunAnimator.SetBool("Reloading", false);
-        ammoIconAnimator.SetBool("IsReloading", false);
     }
 
     void Update()
     {
-        ammoIconAnimator.SetInteger("AmmoCount", currentAmo);
-
         if (isReloading) 
             return;
 
@@ -59,14 +54,12 @@ public class Gun : MonoBehaviour
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
-            ammoIconAnimator.SetBool("IsShooting", false);
         }
         ShowAmmo();
     }
 
     private void Shoot() 
     {
-        ammoIconAnimator.SetBool("IsShooting", true);
         muzzleFlash.Play();
         currentAmo--;
         RaycastHit hit;
@@ -74,9 +67,13 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
             HostileNPC npc = hit.transform.GetComponent<HostileNPC>();
+            TrainingDummy td = hit.transform.GetComponent<TrainingDummy>();
 
             if (npc != null)
                 npc.TakeDamage(damage);
+
+            if (td != null)
+                td.TakeDamage(damage);
 
             if (hit.rigidbody != null)
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
@@ -91,12 +88,10 @@ public class Gun : MonoBehaviour
     {
         isReloading = true;
         gunAnimator.SetBool("Reloading", true);
-        ammoIconAnimator.SetBool("IsReloading", true);
 
         yield return new WaitForSeconds(reloadTime - 0.25f);
 
         gunAnimator.SetBool("Reloading", false);
-        ammoIconAnimator.SetBool("IsReloading", false);
 
         yield return new WaitForSeconds(0.25f);
 
