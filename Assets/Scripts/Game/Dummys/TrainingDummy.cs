@@ -9,7 +9,6 @@ public class TrainingDummy : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        Debug.Log("you hit the dummy");
         health -= amount;
         if (health <= 0f)
             Die();
