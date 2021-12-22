@@ -9182,15 +9182,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4383073119021152, guid: acc0fdf52f17a6140bd3484d66046ae9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.7
+      value: 39.25
       objectReference: {fileID: 0}
     - target: {fileID: 4383073119021152, guid: acc0fdf52f17a6140bd3484d66046ae9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.372
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 4383073119021152, guid: acc0fdf52f17a6140bd3484d66046ae9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.6
+      value: 11.4
       objectReference: {fileID: 0}
     - target: {fileID: 4383073119021152, guid: acc0fdf52f17a6140bd3484d66046ae9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9332,8 +9332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1607ad5ab48c6904d8cc9371be6a299d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEffect: {fileID: 538960645}
+  isHealthQuest: 1
   pickupType: 0
+  playerEffect: {fileID: 538960645}
 --- !u!1 &722115542
 GameObject:
   m_ObjectHideFlags: 0
@@ -9881,11 +9882,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4383073119021152, guid: acc0fdf52f17a6140bd3484d66046ae9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.8989
+      value: -74.9
       objectReference: {fileID: 0}
     - target: {fileID: 4383073119021152, guid: acc0fdf52f17a6140bd3484d66046ae9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.3806703
+      value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: 4383073119021152, guid: acc0fdf52f17a6140bd3484d66046ae9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10031,8 +10032,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1607ad5ab48c6904d8cc9371be6a299d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEffect: {fileID: 538960645}
+  isHealthQuest: 1
   pickupType: 0
+  playerEffect: {fileID: 538960645}
 --- !u!1 &808741309
 GameObject:
   m_ObjectHideFlags: 0
@@ -21381,7 +21383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointer: {fileID: 1983468113}
   target: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 530164038}
   compassLine: {fileID: 81620072}
 --- !u!1 &1133987528
 GameObject:
@@ -22725,6 +22727,8 @@ Transform:
   m_Children:
   - {fileID: 1444875351}
   - {fileID: 291076678}
+  - {fileID: 1475564433}
+  - {fileID: 1932007668}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23540,6 +23544,54 @@ MonoBehaviour:
   questArea: {fileID: 2033454720}
   missionPopup: {fileID: 1227074159}
   isQuest: 0
+--- !u!1 &1475564431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1475564433}
+  - component: {fileID: 1475564432}
+  m_Layer: 0
+  m_Name: QuestReload
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1475564432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475564431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9104ecce3a69a2a4196324b94ed1e61c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qManager: {fileID: 1732286893}
+  qButton: {fileID: 2649502456348177414, guid: bbeced83699514a4182c2e7e525046e5, type: 3}
+  questName: Prepared for battle
+  questDescription: Reload by pressing 'R'
+  key: R
+--- !u!4 &1475564433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475564431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1351570187}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1479256419
 GameObject:
   m_ObjectHideFlags: 0
@@ -24906,8 +24958,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1607ad5ab48c6904d8cc9371be6a299d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEffect: {fileID: 538960645}
+  isHealthQuest: 1
   pickupType: 0
+  playerEffect: {fileID: 538960645}
 --- !u!1001 &1641468681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25494,7 +25547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1732286892
 Transform:
   m_ObjectHideFlags: 0
@@ -25529,8 +25582,8 @@ MonoBehaviour:
   - {fileID: 1444875350}
   - {fileID: 291076679}
   - {fileID: 56070623}
-  - {fileID: 291076679}
-  - {fileID: 291076679}
+  - {fileID: 1475564432}
+  - {fileID: 1932007669}
 --- !u!1 &1734725918
 GameObject:
   m_ObjectHideFlags: 0
@@ -26776,6 +26829,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918543569}
   m_CullTransparentMesh: 1
+--- !u!1 &1932007667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1932007668}
+  - component: {fileID: 1932007669}
+  m_Layer: 0
+  m_Name: QuestHealthPickup
+  m_TagString: PickupManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1932007668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932007667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1351570187}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1932007669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932007667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b5cfa73804fc44c9b32756e5ce7cc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qManager: {fileID: 1732286893}
+  qButton: {fileID: 2649502456348177414, guid: bbeced83699514a4182c2e7e525046e5, type: 3}
+  questName: Patch up
+  questDescription: Walk through a health cross
+  isPickedUp: 0
 --- !u!1 &1932437095
 GameObject:
   m_ObjectHideFlags: 0
