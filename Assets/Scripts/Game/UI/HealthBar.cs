@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private GameObject maxHealthDisplay;
     
     private int health, maxHealth;
-    private float maxWidth, width, height, twoPermille;
+    private float maxWidth, width, height, fourPermille;
     private Color green, yellow, orange, red;
     #endregion
 
@@ -40,13 +40,13 @@ public class HealthBar : MonoBehaviour
     {
         //Check if the health is different from the width that it's supposed to be 
         //If it is different, slowly change the width by adding or substracting
-        twoPermille = maxWidth / 500;
+        fourPermille = maxWidth / 250;
 
         if (width > health * (maxWidth/100))
-            width -= twoPermille;
+            width -= fourPermille;
 
         if (health * (maxWidth / 100) > width)
-            width += twoPermille;
+            width += fourPermille;
 
         if (width <= 0)
             width = 0;
