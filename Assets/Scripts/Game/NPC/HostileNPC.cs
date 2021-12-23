@@ -23,6 +23,7 @@ public class HostileNPC : BaseNPC
     [SerializeField] private GameObject npcWeapon;
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private AudioSource shotSound;
 
     private bool playerInSightRange;
     private bool playerInAttackRange;
@@ -68,6 +69,7 @@ public class HostileNPC : BaseNPC
         if (Physics.Raycast(transform.position, transform.forward, out shootHit, attackRange) && !alreadyAttacked)
         {
             muzzleFlash.Play();
+            shotSound.Play();
             player.GetComponent<Player>().TakeDamage(damage);
 
             GameObject impactGO = Instantiate(impactEffect, shootHit.point, Quaternion.LookRotation(shootHit.normal));

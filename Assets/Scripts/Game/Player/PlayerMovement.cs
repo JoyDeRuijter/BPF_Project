@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
     [Space(10)]
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private GameObject playerModel;
+
+    [Header ("AudioSources")]
+    [Space(10)]
+    [SerializeField] AudioSource footStep;
 
     private float groundDistance, walkSpeed, runSpeed;
     private bool isGrounded, isMoving, isWalking, isRunning, isJumping, isFalling;
@@ -32,6 +37,9 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         groundCheck = GameObject.Find("Player/GroundCheck").GetComponent<Transform>();
         anim = playerModel.GetComponent<Animator>();
+
+        InvokeRepeating("PlayWalkSound", 0f, 0.55f);
+        InvokeRepeating("PlayRunSound", 0f, 0.3f);
     }
 
     void Update()
@@ -127,5 +135,17 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("IsRunning", isRunning);
         anim.SetBool("IsJumping", isJumping);
         anim.SetBool("IsFalling", isFalling);
+    }
+
+    public void PlayWalkSound()
+    {
+        if (isWalking)
+            footStep.Play();  
+    }
+
+    public void PlayRunSound()
+    {
+        if (isRunning)
+            footStep.Play();
     }
 }

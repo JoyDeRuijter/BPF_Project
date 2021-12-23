@@ -19,6 +19,12 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject impactEffect;
     [SerializeField] private Animator gunAnimator;
 
+    [Header("AudioSources")]
+    [Space(10)]
+    [SerializeField] AudioSource shotSound;
+    [SerializeField] AudioSource reloadSound;
+
+
     private float nextTimeToFire;
     private int currentAmo;
     private bool isReloading;
@@ -61,6 +67,7 @@ public class Gun : MonoBehaviour
     private void Shoot() 
     {
         muzzleFlash.Play();
+        shotSound.Play();
         currentAmo--;
         RaycastHit hit;
 
@@ -87,6 +94,7 @@ public class Gun : MonoBehaviour
     private IEnumerator Reload()
     {
         isReloading = true;
+        reloadSound.Play();
         gunAnimator.SetBool("Reloading", true);
 
         yield return new WaitForSeconds(reloadTime - 0.25f);
@@ -103,5 +111,4 @@ public class Gun : MonoBehaviour
     {
         ammoCounter.text = "" + currentAmo;
     }
-
 }
