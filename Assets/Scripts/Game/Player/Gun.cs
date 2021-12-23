@@ -18,6 +18,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private GameObject impactEffect;
     [SerializeField] private Animator gunAnimator;
+    [SerializeField] private Animator ammoIconAnimator;
 
     [Header("AudioSources")]
     [Space(10)]
@@ -96,10 +97,12 @@ public class Gun : MonoBehaviour
         isReloading = true;
         reloadSound.Play();
         gunAnimator.SetBool("Reloading", true);
+        ammoIconAnimator.SetBool("isReloading", true);
 
         yield return new WaitForSeconds(reloadTime - 0.25f);
 
         gunAnimator.SetBool("Reloading", false);
+        ammoIconAnimator.SetBool("isReloading", false);
 
         yield return new WaitForSeconds(0.25f);
 

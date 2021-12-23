@@ -4,8 +4,9 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     #region Variables
-    [Header ("Gameobject References")]
+    [Header("Gameobject References")]
     [SerializeField] private GameObject healthbar;
+    [SerializeField] private GameObject healthCross;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject maxHealthDisplay;
     
@@ -63,18 +64,22 @@ public class HealthBar : MonoBehaviour
         if (health > (maxHealth / 2))
         {
             healthbar.GetComponent<Image>().color = green;
+            healthCross.GetComponent<RawImage>().color = green;
         }
         else if (health > (maxHealth / 4) && health <= (maxHealth / 2))
         {
             healthbar.GetComponent<Image>().color = yellow;
+            healthCross.GetComponent<RawImage>().color = yellow;
         }
         else if (health <= (maxHealth / 4) && health > (maxHealth / 10))
         {
             healthbar.GetComponent<Image>().color = orange;
+            healthCross.GetComponent<RawImage>().color = orange;
         }
         else if (health <= (maxHealth / 10))
         {
             healthbar.GetComponent<Image>().color = red;
+            healthCross.GetComponent<RawImage>().color = red;
         }
     }
 
