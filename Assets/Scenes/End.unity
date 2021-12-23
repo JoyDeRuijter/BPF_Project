@@ -1098,8 +1098,8 @@ MonoBehaviour:
   m_Text: "\nJoy de Ruijter\n\nJoy de Ruijter\n\nJoy de Ruijter\n\nJoy de Ruijter\n\nJoy
     de Ruijter \nDavid Janssen\n\nJoy de Ruijter\n\nJoy de Ruijter\n\n\nJoy de Ruijter\n\nJoy
     de Ruijter\n\nJoy de Ruijter\n\nJoy de Ruijter\nFabian van Dorst\n\n\nSynty Studios
-    \nUnity assets\n\nJoy de Ruijter\n\nSynty Studios\n\nSynty Studios\n\n\nPixabay.com\n\nImphenzia
-    assets\n\nZo\xEB Horwitz\nFanaar Rashid\nSterre Huisman\nFabian van Dorst\nFlin
+    \nUnity assets\n\nJoy de Ruijter\n\nSynty Studios\n\nSynty Studios\n\n\nPixabay.com\n\nSidearm
+    Studios\n\nZo\xEB Horwitz\nFanaar Rashid\nSterre Huisman\nFabian van Dorst\nFlin
     van Asperen\nJelmer Don\n"
 --- !u!222 &1486549732
 CanvasRenderer:
@@ -1242,6 +1242,7 @@ MonoBehaviour:
 
 
     soundeffects
+
 
 
     MENTAL
