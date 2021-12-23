@@ -14,7 +14,7 @@ public class InteractiveNPC : BaseNPC
     private HideAndShowMissions hsm;
     #endregion
 
-    private void Awake()
+    protected override void Awake()
     {
         if (!isQuest)
             hsm = FindObjectOfType<HideAndShowMissions>();
