@@ -25,7 +25,7 @@ public class GameSceneManager : MonoBehaviour
     void Update()
     {
         playerHealth = player.GetComponent<Player>().currentHealth;
-        if (playerHealth == 0)
+        if (playerHealth <= 0)
             SceneManager.LoadScene("Death");
 
         if (finalPopup.activeSelf)

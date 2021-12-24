@@ -1059,8 +1059,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 118, y: -860.32904}
-  m_SizeDelta: {x: 168.096, y: 1890.101}
+  m_AnchoredPosition: {x: 118, y: -881.33124}
+  m_SizeDelta: {x: 168.096, y: 1932.105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486549731
 MonoBehaviour:
@@ -1099,7 +1099,7 @@ MonoBehaviour:
     de Ruijter \nDavid Janssen\n\nJoy de Ruijter\n\nJoy de Ruijter\n\n\nJoy de Ruijter\n\nJoy
     de Ruijter\n\nJoy de Ruijter\n\nJoy de Ruijter\nFabian van Dorst\n\n\nSynty Studios
     \nUnity assets\n\nJoy de Ruijter\n\nSynty Studios\n\nSynty Studios\n\n\nPixabay.com\n\nSidearm
-    Studios\n\nZo\xEB Horwitz\nFanaar Rashid\nSterre Huisman\nFabian van Dorst\nFlin
+    Studios\n\n\nZo\xEB Horwitz\nFanaar Rashid\nSterre Huisman\nFabian van Dorst\nFlin
     van Asperen\nJelmer Don\n"
 --- !u!222 &1486549732
 CanvasRenderer:

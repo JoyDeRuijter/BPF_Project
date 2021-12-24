@@ -42,7 +42,7 @@ public class InteractiveNPC : BaseNPC
             missionIsShowing = true;
         }
         //If it is showing the popup, this will delete the popup from the screen again
-        else if (questArea.GetComponent<AreaCollision>().isColliding && Input.GetKeyDown(KeyCode.E) && missionIsShowing)
+        else if (Input.GetKeyDown(KeyCode.E) && missionIsShowing)
         {
             if(isQuest)
                 GameObject.FindGameObjectWithTag("InteractionManager").GetComponent<QuestInteraction>().isInteracting = false;
