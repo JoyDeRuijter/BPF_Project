@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - AmmoCounter
+  - HealthBar
+  - MoneyCounter
+  - BountyEffect
+  - XpCounter
+  - LevelCounter
+  - LevelUp
+  - KillManager
+  - PickupManager
+  - InteractionManager
   layers:
   - Default
   - TransparentFX
@@ -11,10 +21,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Overlay
+  - Player
+  - NPC
   - 
   - 
   - 
@@ -38,6 +48,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: 3D_UI
+    uniqueID: 93717251
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Particles
+    uniqueID: 1979750763
     locked: 0
